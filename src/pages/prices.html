@@ -1,0 +1,79 @@
+<!-- {"title": "Ціни на медичні послуги — Sana Vita", "description": "Відкритий прайс медичного центру SANA VITA без прихованих платежів: ціни за відділеннями, оплата частинами, знижки.", "active": "prices"} -->
+<main>
+  <section class="page-hero">
+    <div class="container">
+      <nav class="crumbs" aria-label="Хлібні крихти"><a href="index.html">Головна</a><span aria-hidden="true">/</span><span aria-current="page">Ціни</span></nav>
+      <div class="pr-hero">
+        <div class="pr-hero__text">
+          <h1 class="page-hero__title">Вартість <br class="only-desktop">медичних послуг</h1>
+          <p class="page-hero__lead">Відкритий прайс без прихованих платежів. Щоб швидко знайти потрібну послугу, введіть її назву в пошук або оберіть відділення.</p>
+        </div>
+        <div class="card callback">
+          <div class="callback__head">
+            <span class="ico-soft" style="width:52px;height:52px;border-radius:26px"><img src="assets/icons/phone-green.svg" alt=""></span>
+            <div><h2>Отримати дзвінок</h2><span>Щодня з 8:00 до 22:00</span></div>
+          </div>
+          <p>Не знайшли послугу або маєте питання щодо вартості? Залиште номер — ми передзвонимо.</p>
+          <form class="help__form" style="flex:none;align-items:stretch" novalidate data-call-form>
+            <div class="field"><label class="visually-hidden" for="pr-phone">Номер телефону</label><input id="pr-phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="+38 (XXX) XXX XX XX" required><span class="field__error">Введіть повний номер телефону</span></div>
+            <button class="btn btn--grad-green btn--block" type="submit">Надіслати номер</button>
+            <button class="btn btn--grad-purple btn--block" type="button" data-open="call">Записатись онлайн</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:40px" aria-labelledby="pr-title" id="price-list">
+    <div class="container">
+      <div class="sec-head pr-head" style="margin-bottom:40px">
+        <div class="sec-head__text"><p class="eyebrow">Прайс</p><h2 class="h2" id="pr-title">Ціни за відділеннями</h2></div>
+        <label class="search pr-search">
+          <img src="assets/icons/search.svg" alt="">
+          <span class="visually-hidden">Пошук послуги</span>
+          <input type="search" placeholder="Наприклад, «Видалення зовнішнього геморою»" data-price-search autocomplete="off">
+        </label>
+      </div>
+      <div class="problems prices" data-prices style="margin-top:0">
+        <div class="problems__tabs" role="tablist" aria-label="Відділення"></div>
+        <div class="price-panel" role="tabpanel"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:40px" aria-labelledby="pay-title">
+    <div class="container">
+      <div class="sec-head" style="margin-bottom:40px"><div class="sec-head__text"><p class="eyebrow">Оплата</p><h2 class="h2" id="pay-title">Прозорі умови оплати</h2></div></div>
+      <div class="grid-3" style="gap:30px">
+        <div class="card service pay"><span class="ico-soft"><img src="assets/icons/wallet.svg" alt=""></span><div><h3>Оплата частинами</h3><p>Якщо вам незручно оплатити лікування одномоментно — розділимо вартість на частини</p></div></div>
+        <div class="card service pay"><span class="ico-soft"><img src="assets/icons/percent.svg" alt=""></span><div><h3>Постійні знижки</h3><p>Для пенсіонерів, людей з інвалідністю та інших соціально незахищених груп</p></div></div>
+        <div class="card service pay"><span class="ico-soft"><img src="assets/icons/shield-green.svg" alt=""></span><div><h3>Чесні ціни</h3><p>Жодних додаткових чи прихованих платежів — відкритий прайс</p></div></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<script type="application/json" id="prices-data">
+[
+  ["Проктологія", [
+    ["Консультація та діагностика", []],
+    ["Лікування геморою", [
+      ["Безопераційне лікування геморою 2 стадії: латексне лігування, 1 вузол", "від 5 500 грн"],
+      ["Безопераційне лікування геморою 3 стадії: латексне лігування, 1 вузол", "від 5 900 грн"],
+      ["Лазерне видалення гемороїдальних вузлів, 1 вузол", "від 9 800 грн"],
+      ["Оперативне лікування геморою 2 стадії з одним комбінованим вузлом", "від 16 000 грн"],
+      ["Видалення зовнішнього геморою, усі вузли", "від 19 400 грн"],
+      ["Гемороїдектомія — операція за Мілліганом — Морганом", "34 500 грн"]
+    ]],
+    ["Лікування аноректального флеботромбозу", []],
+    ["Лікування анальних тріщин", []],
+    ["Лікування кіст і нориць", []],
+    ["Видалення новоутворень і шкірних утворень", []],
+    ["Лікування гнійних процесів і перевʼязки", []],
+    ["Ботулінотерапія", []]
+  ]],
+  ["Гінекологія", []], ["Урологія", []], ["Дерматологія та трихологія", []], ["Судинна хірургія", []],
+  ["УЗД-діагностика", []], ["Фізіопроцедури", []], ["Хірургія", []], ["Гастроентерологія", []],
+  ["Стоматологія", []], ["Неврологія", []], ["Сімейна медицина", []], ["Лабораторія", []], ["Масаж", []], ["Денний стаціонар", []]
+]
+</script>

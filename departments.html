@@ -1,0 +1,269 @@
+<!doctype html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Відділення — Sana Vita</title>
+<meta name="description" content="16 напрямів медичної допомоги для дорослих і дітей у медичному центрі SANA VITA, Одеса.">
+<meta name="theme-color" content="#fefff8">
+<link rel="icon" href="assets/img/favicon.png" type="image/png">
+<link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body data-page="departments">
+<header class="header">
+  <div class="container">
+    <div class="header__bar">
+      <a class="header__logo" href="index.html" aria-label="Sana Vita — на головну"><img src="assets/img/logo.webp" alt="Sana Vita Medical" width="148" height="64"></a>
+      <nav class="nav" aria-label="Головна навігація">
+        <span class="nav__pill" aria-hidden="true"></span>
+        <a class="nav__link" href="index.html">Головна</a>
+        <a class="nav__link is-active" href="departments.html" aria-current=page>Відділення</a>
+        <a class="nav__link" href="doctors.html">Лікарі</a>
+        <a class="nav__link" href="prices.html">Ціни</a>
+        <a class="nav__link" href="index.html#about">Про нас</a>
+        <a class="nav__link" href="index.html#reviews">Відгуки</a>
+        <a class="nav__link" href="index.html#blog">Блог</a>
+        <a class="nav__link" href="contacts.html">Контакти</a>
+      </nav>
+      <div class="header__actions">
+        <button class="header__burger tablet" type="button" data-open="menu" aria-label="Відкрити меню"><img src="assets/icons/menu.svg" alt=""></button>
+        <button class="lang" type="button" aria-label="Мова: українська"><span>UA</span><img src="assets/icons/chevron-down.svg" alt=""></button>
+        <button class="btn btn--grad-green header__cta" type="button" data-open="contact"><img src="assets/icons/phone-cta.svg" alt="">Звʼязатись</button>
+      </div>
+    </div>
+    <div class="header__mobile">
+      <button class="header__burger" type="button" data-open="menu" aria-label="Відкрити меню"><img src="assets/icons/menu.svg" alt=""></button>
+      <a class="header__logo" href="index.html" aria-label="Sana Vita — на головну"><img src="assets/img/logo.webp" alt="Sana Vita Medical" width="140" height="52"></a>
+      <button class="header__call" type="button" data-open="contact" aria-label="Звʼязатися з нами"><img src="assets/icons/phone-cta.svg" alt=""></button>
+    </div>
+  </div>
+</header>
+
+<div class="overlay" id="menu" role="dialog" aria-modal="true" aria-label="Меню">
+  <div class="menu">
+    <div class="menu__top">
+      <button class="icon-btn" type="button" data-close aria-label="Закрити меню"><img src="assets/icons/close.svg" alt=""></button>
+      <button class="menu__lang" type="button">UA<img src="assets/icons/chevron-lang.svg" alt=""></button>
+    </div>
+    <p class="menu__label">Меню</p>
+    <nav class="menu__list" aria-label="Мобільна навігація">
+      <a class="menu__item" href="index.html"><span>Головна</span><img src="assets/icons/chevron-right.svg" alt=""></a>
+      <a class="menu__item is-active" href="departments.html" aria-current=page><span>Відділення</span><img src="assets/icons/menu-dot.svg" alt=""></a>
+      <a class="menu__item" href="doctors.html"><span>Лікарі</span><img src="assets/icons/chevron-right.svg" alt=""></a>
+      <a class="menu__item" href="prices.html"><span>Ціни</span><img src="assets/icons/chevron-right.svg" alt=""></a>
+      <a class="menu__item" href="index.html#about"><span>Про нас</span><img src="assets/icons/chevron-right.svg" alt=""></a>
+      <a class="menu__item" href="index.html#reviews"><span>Відгуки</span><img src="assets/icons/chevron-right.svg" alt=""></a>
+      <a class="menu__item" href="index.html#blog"><span>Блог</span><img src="assets/icons/chevron-right.svg" alt=""></a>
+      <a class="menu__item" href="contacts.html"><span>Контакти</span><img src="assets/icons/chevron-right.svg" alt=""></a>
+    </nav>
+    <div class="menu__bottom">
+      <div class="menu__divider"></div>
+      <a class="menu__info" href="tel:+380675954103"><b>+38 (067) 595 41 03</b><span>Щодня з 8:00 до 22:00</span></a>
+      <a class="menu__info" href="contacts.html"><b>Одеса, вул. Водопровідна 2/5</b><span>Поруч із залізничним вокзалом</span></a>
+      <button class="btn btn--purple btn-soft btn--block" type="button" data-open="call">Записатись онлайн</button>
+    </div>
+  </div>
+</div>
+
+<div class="page">
+<main>
+  <section class="page-hero">
+    <div class="container">
+      <nav class="crumbs" aria-label="Хлібні крихти"><a href="index.html">Головна</a><span aria-hidden="true">/</span><span aria-current="page">Відділення</span></nav>
+      <div class="page-hero__text">
+        <h1 class="page-hero__title"><span class="only-desktop">Медицина, якій можна довіряти</span><span class="only-mobile">Відділення</span></h1>
+        <p class="page-hero__lead">Жодних черг. Гарантована анонімність. Ввічливий та уважний персонал. Комфортні умови перебування. Сучасна, якісна, безпечна та доступна медицина з пацієнтоорієнтованим підходом.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:40px" aria-labelledby="all-dept">
+    <div class="container">
+      <div class="sec-head only-desktop">
+        <div class="sec-head__text">
+          <p class="eyebrow">Напрями</p>
+          <div style="display:flex;flex-direction:column;gap:15px">
+            <h2 class="h2" id="all-dept">Оберіть відділення</h2>
+            <p class="sec-sub" style="margin:0">16 напрямів для дорослих і дітей</p>
+          </div>
+        </div>
+      </div>
+      <div class="dept-grid">
+        <a class="dept" href="#problems" data-dept="Проктологія"><div class="dept__body"><h3 class="dept__title">Проктологія</h3><p class="dept__desc">Діагностика та лікування делікатних проблем</p></div><span class="dept__arrow"><img src="assets/icons/arrow-up-right.svg" alt=""></span></a>
+        <a class="dept" href="#problems" data-dept="Урологія"><div class="dept__body"><h3 class="dept__title">Урологія</h3><p class="dept__desc">Турбота про здоровʼя сечостатевої системи</p></div><span class="dept__arrow"><img src="assets/icons/arrow-up-right.svg" alt=""></span></a>
+        <a class="dept" href="#problems" data-dept="Гінекологія"><div class="dept__body"><h3 class="dept__title">Гінекологія</h3><p class="dept__desc">Профілактика та турбота про жіноче здоровʼя</p></div><span class="dept__arrow"><img src="assets/icons/arrow-up-right.svg" alt=""></span></a>
+        <a class="dept" href="#problems" data-dept="Дерматологія та трихологія"><div class="dept__body"><h3 class="dept__title">Дерматологія</h3><p class="dept__desc">Діагностика та лікування захворювань шкіри</p></div><span class="dept__arrow"><img src="assets/icons/arrow-up-right.svg" alt=""></span></a>
+        <a class="dept" href="#problems" data-dept="Дерматологія та трихологія"><div class="dept__body"><h3 class="dept__title">Трихологія</h3><p class="dept__desc">Турбота про здоровʼя волосся та шкіри голови</p></div><span class="dept__arrow"><img src="assets/icons/arrow-up-right.svg" alt=""></span></a>
+        <a class="dept" href="#problems" data-dept="УЗД-діагностика"><div class="dept__body"><h3 class="dept__title">УЗД-діагностика</h3><p class="dept__desc">Ультразвукове обстеження органів і систем</p></div><span class="dept__arrow"><img src="assets/icons/arrow-up-right.svg" alt=""></span></a>
+        <a class="dept" href="#problems" data-dept="Неврологія"><div class="dept__body"><h3 class="dept__title">Неврологія</h3><p class="dept__desc">Головний біль, спина та нервова система</p></div><span class="dept__arrow"><img src="assets/icons/arrow-up-right.svg" alt=""></span></a>
+        <a class="dept" href="#problems" data-dept="Хірургія"><div class="dept__body"><h3 class="dept__title">Хірургія</h3><p class="dept__desc">Малоінвазивні амбулаторні операції</p></div><span class="dept__arrow"><img src="assets/icons/arrow-up-right.svg" alt=""></span></a>
+        <a class="dept" href="#problems" data-dept="Гастроентерологія"><div class="dept__body"><h3 class="dept__title">Гастроентерологія</h3><p class="dept__desc">Здоровʼя шлунково-кишкового тракту</p></div><span class="dept__arrow"><img src="assets/icons/arrow-up-right.svg" alt=""></span></a>
+        <a class="dept" href="#problems" data-dept="Стоматологія"><div class="dept__body"><h3 class="dept__title">Стоматологія</h3><p class="dept__desc">Лікування та гігієна для дорослих і дітей</p></div><span class="dept__arrow"><img src="assets/icons/arrow-up-right.svg" alt=""></span></a>
+        <a class="dept" href="#problems" data-dept="Сімейна медицина"><div class="dept__body"><h3 class="dept__title">Сімейна медицина</h3><p class="dept__desc">Перший візит і подальший супровід</p></div><span class="dept__arrow"><img src="assets/icons/arrow-up-right.svg" alt=""></span></a>
+        <a class="dept" href="#problems" data-dept="Денний стаціонар"><div class="dept__body"><h3 class="dept__title">Денний стаціонар</h3><p class="dept__desc">Лікування під наглядом лікаря протягом дня</p></div><span class="dept__arrow"><img src="assets/icons/arrow-up-right.svg" alt=""></span></a>
+        <a class="dept" href="#problems" data-dept="Фізіотерапія"><div class="dept__body"><h3 class="dept__title">Фізіотерапія</h3><p class="dept__desc">Відновлення та реабілітація після лікування</p></div><span class="dept__arrow"><img src="assets/icons/arrow-up-right.svg" alt=""></span></a>
+        <a class="dept" href="#problems" data-dept="Лабораторія"><div class="dept__body"><h3 class="dept__title">Лабораторія</h3><p class="dept__desc">Аналізи для діагностики та контролю здоровʼя</p></div><span class="dept__arrow"><img src="assets/icons/arrow-up-right.svg" alt=""></span></a>
+        <a class="dept" href="#problems" data-dept="Масаж"><div class="dept__body"><h3 class="dept__title">Масаж</h3><p class="dept__desc">Розслаблення мʼязів і зняття напруження</p></div><span class="dept__arrow"><img src="assets/icons/arrow-up-right.svg" alt=""></span></a>
+        <a class="dept" href="#problems" data-dept="Флебологія"><div class="dept__body"><h3 class="dept__title">Флебологія</h3><p class="dept__desc">Обстеження та лікування вен</p></div><span class="dept__arrow"><img src="assets/icons/arrow-up-right.svg" alt=""></span></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:40px" aria-labelledby="problems-title" id="problems">
+    <div class="container">
+      <div class="sec-head" style="margin-bottom:40px">
+        <div class="sec-head__text" style="gap:12px">
+          <h2 class="h2" id="problems-title">Вирішуємо такі проблеми</h2>
+          <p class="sec-sub only-desktop" style="margin:0">Оберіть відділення або введіть назву проблеми в пошук</p>
+        </div>
+      </div>
+      <label class="search">
+        <img src="assets/icons/search.svg" alt="">
+        <span class="visually-hidden">Пошук проблеми</span>
+        <input type="search" placeholder="Наприклад, «Геморой»" data-problem-search autocomplete="off">
+      </label>
+      <div class="problems" data-problems>
+        <div class="problems__tabs" role="tablist" aria-label="Відділення"></div>
+        <div class="card problems__panel" role="tabpanel">
+          <h3></h3>
+          <div class="plist"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<script type="application/json" id="problems-data">
+[
+  ["Проктологія", ["Анальна тріщина", "Анальні бахромки", "Анокопчиковий больовий синдром", "Атероми та ліпоми", "Ботулінотерапія у проктології", "Геморой", "Гострий парапроктит", "Кондиломи", "Нориця прямої кишки", "Поліпи прямої кишки", "Пілонідальна кіста", "Свербіж заднього проходу", "Тромбоз гемороїдального вузла", "Випадіння прямої кишки", "Хронічний запор"]],
+  ["Гінекологія", ["Ерозія шийки матки", "Кіста яєчника", "Міома матки", "Ендометріоз", "Порушення менструального циклу", "Запальні захворювання", "Планування вагітності", "Клімакс"]],
+  ["Урологія", ["Простатит", "Аденома простати", "Цистит", "Сечокамʼяна хвороба", "Нетримання сечі", "Чоловіче безпліддя", "Фімоз"]],
+  ["Дерматологія та трихологія", ["Акне", "Розацеа", "Псоріаз", "Дерматит", "Видалення новоутворень", "Випадіння волосся", "Себорея"]],
+  ["УЗД-діагностика", ["УЗД органів черевної порожнини", "УЗД щитоподібної залози", "УЗД серця", "УЗД органів малого таза", "УЗД молочних залоз", "УЗД судин"]],
+  ["Неврологія", ["Головний біль", "Мігрень", "Біль у спині", "Остеохондроз", "Запаморочення", "Порушення сну"]],
+  ["Гастроентерологія", ["Гастрит", "Виразкова хвороба", "Синдром подразненого кишківника", "Рефлюкс", "Здуття та порушення травлення", "Захворювання печінки"]],
+  ["Хірургія", ["Грижі", "Атероми та ліпоми", "Врослий ніготь", "Видалення новоутворень", "Розтин абсцесів", "Обробка ран"]],
+  ["Стоматологія", ["Карієс", "Пародонтит", "Професійна гігієна", "Відбілювання", "Протезування"]],
+  ["Фізіотерапія", ["Магнітотерапія", "Електрофорез", "Ударно-хвильова терапія", "Реабілітація після операцій"]],
+  ["Сімейна медицина", ["Консультація терапевта", "Декларація із сімейним лікарем", "Профілактичні огляди", "Медичні довідки", "Вакцинація"]],
+  ["Денний стаціонар", ["Інфузійна терапія", "Курс інʼєкцій", "Спостереження після процедур"]],
+  ["Лабораторія", ["Загальний аналіз крові", "Біохімічний аналіз крові", "Гормони", "Аналізи на інфекції", "Онкомаркери"]],
+  ["Масаж", ["Класичний масаж", "Масаж спини", "Лімфодренажний масаж", "Антицелюлітний масаж"]],
+  ["Флебологія", ["Варикозне розширення вен", "Судинні зірочки", "Тромбофлебіт", "УЗД вен нижніх кінцівок"]]
+]
+</script>
+</div>
+<footer class="footer">
+  <div class="container">
+    <div class="footer__panel">
+      <div class="f-brand">
+        <p class="f-brand__slogan">Якісна медицина<br>доступна кожному</p>
+        <div class="f-rating"><b>4.8</b><img src="assets/icons/stars.svg" alt="5 зірок"><span>196 відгуків</span></div>
+        <div class="f-box f-msg">
+          <p class="f-label">МИ В МЕСЕНДЖЕРАХ</p>
+          <div class="f-msg__row">
+            <a class="f-chip" href="https://t.me/" target="_blank" rel="noopener"><img src="assets/icons/telegram.svg" alt="">Telegram</a>
+            <a class="f-chip" href="viber://chat?number=%2B380675954103"><img src="assets/icons/viber.svg" alt="">Viber</a>
+          </div>
+        </div>
+      </div>
+      <div class="f-box f-contacts">
+        <p class="f-label">КОНТАКТИ</p>
+        <a class="f-line" href="contacts.html"><span class="f-ico"><img src="assets/icons/pin.svg" alt=""></span><span><b>Одеса, вул. Водопровідна 2/5</b><span>Поруч із залізничним вокзалом</span></span></a>
+        <a class="f-line" href="tel:+380675954103"><span class="f-ico"><img src="assets/icons/phone.svg" alt=""></span><span><b>+38 (067) 595 41 03</b><span>Щодня 8:00–22:00</span></span></a>
+        <a class="f-line" href="mailto:director@sanavita.com.ua"><span class="f-ico"><img src="assets/icons/mail.svg" alt=""></span><span><b>director@sanavita.com.ua</b></span></a>
+        <div class="f-actions">
+          <a class="f-btn f-btn--call" href="tel:+380675954103"><img src="assets/icons/phone-btn.svg" alt="">Подзвонити</a>
+          <a class="f-btn f-btn--route" href="https://www.google.com/maps/search/?api=1&amp;query=%D0%9E%D0%B4%D0%B5%D1%81%D0%B0%2C+%D0%B2%D1%83%D0%BB.+%D0%92%D0%BE%D0%B4%D0%BE%D0%BF%D1%80%D0%BE%D0%B2%D1%96%D0%B4%D0%BD%D0%B0+2%2F5" target="_blank" rel="noopener"><img src="assets/icons/route.svg" alt="">Маршрут</a>
+        </div>
+      </div>
+      <nav class="f-box f-nav" aria-label="Навігація у футері">
+        <p class="f-label">НАВІГАЦІЯ</p>
+        <a href="departments.html">Відділення</a>
+        <a href="doctors.html">Лікарі</a>
+        <a href="prices.html">Ціни</a>
+        <a href="index.html#about">Про нас</a>
+        <a href="index.html#reviews">Відгуки</a>
+        <a href="index.html#blog">Блог</a>
+      </nav>
+      <div class="f-legal">
+        <div class="f-box f-badge"><img src="assets/icons/shield.svg" alt=""><span>Стандарт обслуговування міжнародних пацієнтів · Bookimed, 2025</span></div>
+        <p>ТОВ «САНА ВІТА МЕДИКАЛ»<br>ЄДРПОУ 44018609<br>Ліцензія МОЗ: реєстраційне досьє від 05.10.2021 № 4398/21/М</p>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <b>© Одеса 2026, SANA VITA — здорове життя!</b>
+      <nav aria-label="Юридична інформація"><a href="#">Умови користування</a><a href="#">Політика конфіденційності</a></nav>
+    </div>
+  </div>
+</footer>
+
+<div class="overlay overlay--corner" id="contact" role="dialog" aria-modal="true" aria-labelledby="contact-title">
+  <div class="modal-wrap" data-close-outside>
+    <div class="modal modal--contact">
+      <div class="modal__top">
+        <button class="icon-btn" type="button" data-close aria-label="Закрити"><img src="assets/icons/close.svg" alt=""></button>
+        <p class="modal__title" id="contact-title">Звʼязатися з нами</p>
+      </div>
+      <p class="modal__label">Телефони</p>
+      <div style="display:flex;flex-direction:column;gap:10px">
+        <a class="phone-row" href="tel:+380675954103"><span class="phone-row__ico"><img src="assets/icons/phone-green.svg" alt=""></span><span>+38 (067) 595 41 03</span><img src="assets/icons/chevron-right-purple.svg" alt=""></a>
+        <a class="phone-row" href="tel:+380674979159"><span class="phone-row__ico"><img src="assets/icons/phone-green.svg" alt=""></span><span>+38 (067) 497 91 59</span><img src="assets/icons/chevron-right-purple.svg" alt=""></a>
+      </div>
+      <p class="modal__muted">Щодня з 8:00 до 22:00</p>
+      <div class="menu__divider"></div>
+      <p class="modal__label">Месенджери</p>
+      <div class="messengers">
+        <a class="messenger messenger--tg" href="https://t.me/" target="_blank" rel="noopener"><img src="assets/icons/telegram-color.svg" alt="">Telegram</a>
+        <a class="messenger messenger--vb" href="viber://chat?number=%2B380675954103"><img src="assets/icons/viber-color.svg" alt="">Viber</a>
+      </div>
+      <button class="btn btn--purple btn-soft btn--block" type="button" data-open="call">Записатись онлайн</button>
+    </div>
+  </div>
+</div>
+
+<div class="overlay" id="call" role="dialog" aria-modal="true" aria-labelledby="call-title">
+  <div class="modal-wrap" data-close-outside>
+    <form class="modal modal--call" novalidate data-call-form>
+      <div class="modal__top">
+        <button class="icon-btn" type="button" data-close aria-label="Закрити"><img src="assets/icons/close.svg" alt=""></button>
+      </div>
+      <div>
+        <p class="modal__heading" id="call-title">Зворотний дзвінок</p>
+        <p class="modal__sub">Залиште свій номер телефону,<br>і ми вам зателефонуємо.</p>
+      </div>
+      <div class="field">
+        <label for="call-phone">Номер телефону</label>
+        <input id="call-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="+38 (XXX) XXX XX XX" required>
+        <span class="field__error">Введіть повний номер телефону</span>
+      </div>
+      <button class="btn btn--grad-green btn--block" type="submit">Надіслати номер</button>
+    </form>
+  </div>
+</div>
+
+<div class="overlay" id="done" role="dialog" aria-modal="true" aria-labelledby="done-title">
+  <div class="modal-wrap" data-close-outside>
+    <div class="modal modal--done">
+      <div class="modal__top">
+        <button class="icon-btn" type="button" data-close aria-label="Закрити"><img src="assets/icons/close.svg" alt=""></button>
+        <p class="modal__title">Заявку прийнято</p>
+      </div>
+      <div class="done">
+        <span class="done__ico"><img src="assets/icons/check.svg" alt=""></span>
+        <h3 id="done-title">Дякуємо! Ми вам зателефонуємо</h3>
+        <p>Адміністратор передзвонить на вказаний номер найближчим часом.</p>
+        <small>Щодня з 8:00 до 22:00</small>
+      </div>
+      <button class="btn btn--grad-green btn--block" type="button" data-close>Добре</button>
+    </div>
+  </div>
+</div>
+
+<script src="js/main.js" defer></script>
+</body>
+</html>
