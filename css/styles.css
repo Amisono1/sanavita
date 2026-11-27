@@ -1287,3 +1287,160 @@ main > section > .container { position: relative; }
 }
 /* на вужчих екранах блоки мають іншу висоту, тож декор ховаємо, щоб він не зʼїжджав */
 @media (max-width: 1199px) { .deco-layer, .sparkle, .hero__sparkle { display: none; } }
+
+/* ==========================================================
+   Мобільна Головна — точно за мобільним макетом Figma
+   ========================================================== */
+.values { --rx: 39.71; --ry: 39.71; }
+.values__orbit-m, .top-fade, .hero-call { display: none; }
+.fact__star { color: inherit; }
+.contact-form__text .eyebrow { color: var(--green); }
+.phone-row__ico { flex: none !important; }
+.phone-row span:not(.phone-row__ico) { white-space: nowrap; }
+
+@media (max-width: 767px) {
+  .top-fade { display: block; position: fixed; z-index: 40; left: 0; right: 0; top: 0; height: 128px; pointer-events: none;
+    background: linear-gradient(180deg, rgba(245, 247, 237, .95) 15%, rgba(245, 247, 237, 0)); }
+  .page { padding-top: 100px; }
+
+  /* Перший екран */
+  .hero { padding: 30px 0 0; }
+  .hero__row { gap: 0; }
+  .hero__text { gap: 0; }
+  .facts { gap: 8px; padding: 0; margin-bottom: 30px; flex-wrap: nowrap; }
+  .fact { padding: 8px 14px; font-size: 14px; line-height: 1.2; }
+  .fact__star { color: var(--star); }
+  .hero__copy { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+  .hero-call { display: flex; flex-direction: column; gap: 15px; padding: 10px; margin: 0 14px 25px; }
+  .hero-call h2 { font-weight: 700; font-size: 20px; line-height: 1.2; letter-spacing: .4px; color: var(--black); }
+  .hero-call p { font-size: 14px; line-height: 1.9; letter-spacing: .28px; color: var(--black); }
+  .hero__btns { gap: 15px; margin-bottom: 60px; }
+  .hero__btns .btn { width: 280px; height: 48px; font-size: 16px; letter-spacing: .32px; }
+
+  .program { padding-bottom: 0; }
+  .program__track { height: 390px; }
+  .program__photo { height: 272px; border-radius: 22px; }
+  .program__photo img { width: 124.2%; max-width: none; margin-left: -12.1%; }
+  .program__frame { left: 10px; right: 10px; top: 10px; height: 252px; border-radius: 22px; }
+  .program__card { left: 20px; right: 20px; top: 150px; min-height: 240px; padding: 20px; gap: 0; border-radius: 22px; }
+  .program__kicker { font-size: 14px; letter-spacing: .35px; }
+  .program__title { margin-top: 0; font-size: 16px; line-height: 1.2; }
+  .program__desc { font-size: 14px; line-height: 1.2; letter-spacing: .35px; }
+  .program__dots { position: static; display: flex; align-items: center; justify-content: center; gap: 10px; margin-top: 15px; }
+  .program__dots .dots--lg { gap: 5px; }
+  .program__dots .dots--lg button, .program__dots .dots--lg button.is-active { width: 8px; height: 8px; }
+  .program__dots .dots--lg button { background: #d9d9d9; }
+  .program__dots .dots--lg button.is-active { background: var(--purple); }
+
+  /* Про нас: заголовок → фото → текст → кнопка → статистика */
+  .about { padding: 60px 0 40px; }
+  .about__row, .about__text, .about__intro, .about__copy { display: contents; }
+  .about .container { display: flex; flex-direction: column; gap: 15px; }
+  .about__copy .h2 { order: 1; padding: 10px; font-size: 20px; letter-spacing: .4px; }
+  .about__photo { order: 2; border-radius: 22px; }
+  .about__mtext { order: 3; padding: 10px; font-size: 14px !important; line-height: 1.9 !important; letter-spacing: .28px; color: var(--black) !important; }
+  .about__intro .btn { order: 4; align-self: center; width: 280px; height: 48px; border-radius: 60px; letter-spacing: .32px; }
+  .stats { order: 5; margin-top: 15px; }
+
+  /* Відгуки */
+  .reviews .sec-head { gap: 15px; margin-bottom: 15px; }
+  .reviews .sec-head .h2 { padding: 10px; }
+  .rating-pill { height: 48px; padding: 10px 16px 10px 14px; gap: 10px; }
+  .rating-pill b { font-size: 18px; line-height: 1.45; }
+  .rating-pill .stars-txt { font-size: 17px; letter-spacing: 2px; }
+  .rating-pill span:last-child { font-size: 14px; }
+  .reviews__track { padding: 10px 4px 24px; }
+  .review { padding: 20px; gap: 10px; min-height: 220px; }
+  .review__author img { width: 38px; height: 38px; }
+  .review__author b { font-size: 14px; }
+  .review__author time { font-size: 12px; }
+  .review .review__stars { font-size: 14px; }
+  .review p { font-size: 14px; line-height: 1.45; }
+  .carousel__nav { gap: 10px; }
+
+  /* Відділення */
+  .dept-grid { gap: 20px; }
+  .dept { padding: 13px 10px; border-radius: 22px; gap: 20px; }
+  .dept__body { gap: 15px; padding: 10px; }
+  .dept__title { font-size: 20px; letter-spacing: .4px; }
+  .dept__desc { font-size: 14px; line-height: 1.9; letter-spacing: .28px; }
+  .sec-more .btn { width: 280px; height: 48px; border-radius: 22px; letter-spacing: .32px; }
+  .sec-head .h2 { padding: 10px 10px 0; }
+
+  /* Команда: три картки одна під одною */
+  .doctors .carousel__track { flex-direction: column; align-items: center; gap: 30px; overflow: visible; padding: 0; margin: 0; }
+  .doctors .carousel__nav, .doctors .doc--no-mobile { display: none !important; }
+  .doctors__track > .doc { width: 280px; }
+  .doctors .doc__name { font-size: 16px; }
+  .doctors .doc__role { font-size: 14px; }
+  .doctors .doc__btn { font-size: 14px; letter-spacing: .28px; }
+  .doctors .sec-more { margin-top: 30px; }
+
+  /* Ласкаво просимо: велике коло-еліпс */
+  .welcome { padding: 30px 0 40px; }
+  .welcome__inner { gap: 20px; }
+  .welcome__inner .h2 { padding: 10px; }
+  .values { --rx: 44.74; --ry: 42.21; width: min(100vw, 420px); height: auto; aspect-ratio: 360 / 430; margin: 0 -16px; }
+  .values__orbit, .values__orbit-inner { display: none; }
+  .values__orbit-m { display: block; position: absolute; left: 5.25%; right: 5.25%; top: 7.79%; bottom: 7.79%; width: 89.5%; height: 84.42%; }
+  .values__center { left: 18%; right: 18%; top: 30%; bottom: 30%; width: auto; height: auto; padding: 0; border-radius: 0; background: none !important; box-shadow: none; }
+  .values__center h3 { display: none; }
+  .values__center p { font-size: 13px; line-height: 1.2; letter-spacing: .26px; color: var(--black); }
+  .values .value, .values .value.is-active {
+    width: 18.62%; height: auto; aspect-ratio: 1; margin: 0; transform: translate(-50%, -50%) !important;
+    background: var(--white); border: .84px solid var(--green); box-shadow: none;
+  }
+  .values .value.is-active { border: 1.68px solid var(--purple); }
+  .values .value img { width: 46%; }
+
+  /* Сертифікат */
+  .cert { padding: 20px 20px 24px; gap: 20px; border-radius: 24px; }
+  .cert__photo { aspect-ratio: auto; height: 190px; border-radius: 20px; }
+  .cert__photo > img:first-child { border-radius: 22px; }
+  .cert__gift { width: 34px; height: 34px; top: 11px; right: 11px; }
+  .cert__text { gap: 20px; }
+  .tag { padding: 6px 12px; border-radius: 20px; font-size: 14px; }
+  .cert .h2 { font-size: 22px; line-height: 1.25; padding: 0; }
+  .cert__text > p:not(.accent) { font-size: 14px; line-height: 1.5; }
+  .accent { gap: 12px; }
+  .accent::before { height: 40px; }
+  .accent b { font-size: 16px; }
+  .cert__btns { gap: 15px; }
+  .cert__btns .btn { height: 48px; border-radius: 22px; letter-spacing: .32px; }
+
+  /* Блог */
+  .post__photo { height: 207px; margin-bottom: -77px; border-radius: 22px; }
+  .post__body { width: calc(100% - 32px); padding: 20px 20px 10px; gap: 15px; border-radius: 22px; min-height: 222px; }
+  .post__title { font-size: 14px; line-height: 1.2; letter-spacing: .28px; }
+  .post__excerpt { font-size: 14px; line-height: 1.2; color: var(--black); }
+  .post__more { font-size: 14px; letter-spacing: .28px; padding-bottom: 5px; }
+  .post__tag { left: 10px; top: 10px; padding: 10px; border-radius: 20px; font-weight: 300; font-size: 12px; letter-spacing: .24px; text-transform: uppercase; }
+
+  /* Футер */
+  .footer { padding: 30px 0 25px; }
+  .footer .container { width: calc(100% - 32px); }
+  .footer__panel { gap: 30px; }
+  .f-brand__slogan { font-size: 18px; max-width: 300px; }
+  .f-brand__slogan br { display: none; }
+  .f-rating { padding: 10px 16px 10px 14px; margin-top: -18px; }
+  .f-rating span { font-weight: 500; font-size: 14px; color: rgba(255, 255, 255, .72); }
+  .f-contacts { order: 3; gap: 14px; position: relative; }
+  .f-contacts::before { content: ""; position: absolute; left: 0; right: 0; top: -15px; height: 1px; background: rgba(255, 255, 255, .25); }
+  .f-line span span, .f-line > span:last-child > span { color: rgba(255, 255, 255, .72); }
+  .f-btn { font-size: 14px; }
+  .f-btn--call { color: #465509; }
+  .f-msg { padding: 16px; gap: 12px; }
+  .f-label { font-size: 14px; }
+  .f-chip { gap: 8px; padding: 10px 12px; }
+  .f-chip img { width: 22px; height: 22px; }
+  .f-nav { gap: 0 20px; border-top-color: rgba(255, 255, 255, .25); padding-top: 30px; }
+  .f-nav .f-label { margin-bottom: 15px; }
+  .f-nav a { padding: 10px 0; font-size: 15px; }
+  .f-badge { font-size: 14px; }
+  .footer__bottom { flex-direction: row; justify-content: space-between; align-items: center; margin-top: 30px; padding-top: 14px !important; }
+  .footer__bottom nav a { text-decoration: underline; font-weight: 500; }
+}
+@media (max-width: 767px) {
+  .program__card { gap: 10px; }
+  .program__desc { line-height: 1.35; }
+}

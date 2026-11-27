@@ -152,8 +152,8 @@
         dotsBox.appendChild(b);
       });
       function restart() { clearInterval(timer); if (slides.length > 1) timer = setInterval(function () { show(i + 1); }, 6000); }
-      root.querySelector("[data-prev]").addEventListener("click", function () { show(i - 1); restart(); });
-      root.querySelector("[data-next]").addEventListener("click", function () { show(i + 1); restart(); });
+      root.querySelectorAll("[data-prev]").forEach(function (b) { b.addEventListener("click", function () { show(i - 1); restart(); }); });
+      root.querySelectorAll("[data-next]").forEach(function (b) { b.addEventListener("click", function () { show(i + 1); restart(); }); });
       root.addEventListener("mouseenter", function () { clearInterval(timer); });
       root.addEventListener("mouseleave", restart);
       // свайп на мобільному
@@ -176,21 +176,28 @@
       var text = center.querySelector("p");
       var inner = root.querySelector(".values__orbit-inner");
       var items = Array.prototype.slice.call(root.querySelectorAll(".value"));
-      var n = items.length, step = 360 / n, R = 39.71; // радіус орбіти у % від розміру кола
+      var n = items.length, step = 360 / n;
+      // радіуси орбіти (у % від ширини/висоти блоку) задаються в CSS: на мобільному орбіта — еліпс
+      function radius(name) { return parseFloat(getComputedStyle(root).getPropertyValue(name)) || 39.71; }
       var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
       var offset = 0, active = 0, anim = null, timer = null, hover = false;
 
       function place(off) {
         items.forEach(function (el, i) {
           var a = (-90 + i * step + off) * Math.PI / 180;
-          el.style.left = (50 + R * Math.cos(a)) + "%";
-          el.style.top = (50 + R * Math.sin(a)) + "%";
+          el.style.left = (50 + radius("--rx") * Math.cos(a)) + "%";
+          el.style.top = (50 + radius("--ry") * Math.sin(a)) + "%";
         });
         if (inner) inner.style.transform = "rotate(" + off + "deg)";
       }
       function setActive(k) {
         active = k;
-        items.forEach(function (b, i) { b.classList.toggle("is-active", i === k); b.setAttribute("aria-pressed", i === k ? "true" : "false"); });
+        items.forEach(function (b, i) {
+          b.classList.toggle("is-active", i === k); b.setAttribute("aria-pressed", i === k ? "true" : "false");
+          var img = b.querySelector("img");
+          if (!img.getAttribute("data-src")) img.setAttribute("data-src", img.getAttribute("src"));
+          img.src = i === k ? img.getAttribute("data-active-src") || img.getAttribute("data-src") : img.getAttribute("data-src");
+        });
         center.classList.add("is-fading");
         setTimeout(function () {
           title.textContent = items[k].getAttribute("data-title");
@@ -231,7 +238,12 @@
       if ("IntersectionObserver" in window) {
         new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) restart(); else clearInterval(timer); }); }, { threshold: .4 }).observe(root);
       } else restart();
-      place(0);
+      // на мобільному за макетом стартова активна іконка — «Лікарі»
+      var start = window.matchMedia("(max-width: 767px)").matches ? parseInt(root.getAttribute("data-mobile-start") || "0", 10) : 0;
+      offset = -start * step;
+      place(offset);
+      active = -1; setActive(start);
+      window.addEventListener("resize", function () { place(offset); });
     });
   }
 

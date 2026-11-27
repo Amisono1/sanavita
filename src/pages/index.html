@@ -20,7 +20,7 @@
         <div class="hero__text">
           <p class="eyebrow">Багатопрофільний медичний центр · Одеса</p>
           <div class="facts">
-            <span class="glass fact">4.8 ★ · 196 відгуків</span>
+            <span class="glass fact">4.8 <span class="fact__star">★</span> · 196 відгуків</span>
             <span class="glass fact">18 000+ пацієнтів</span>
             <span class="glass fact">Щодня 8:00–22:00</span>
           </div>
@@ -28,8 +28,12 @@
             <h1 class="h1" id="hero-title">Якісна медицина <br>доступна кожному</h1>
             <p class="lead">Сучасна діагностика та лікування без черг і з гарантованою анонімністю. Запишіться онлайн або залиште номер — ми передзвонимо.</p>
           </div>
+          <div class="hero-call only-mobile">
+            <h2>Отримати дзвінок</h2>
+            <p>Контакт центр працює щодня<br>з 8:00 до 22:00</p>
+          </div>
           <div class="hero__btns">
-            <button class="btn btn--lg btn--grad-green" type="button" data-open="call">Отримати дзвінок</button>
+            <button class="btn btn--lg btn--grad-green" type="button" data-open="call"><span class="only-desktop">Отримати дзвінок</span><span class="only-mobile">Надіслати номер</span></button>
             <button class="btn btn--lg btn--grad-purple" type="button" data-open="call">Записатись онлайн</button>
           </div>
         </div>
@@ -50,7 +54,11 @@
           </div>
           <button class="program__arrow program__arrow--prev" type="button" data-prev aria-label="Попередня програма"><img src="assets/icons/arrow-prev.svg" alt=""></button>
           <button class="program__arrow program__arrow--next" type="button" data-next aria-label="Наступна програма"><img src="assets/icons/arrow-next.svg" alt=""></button>
-          <div class="program__dots"><div class="dots dots--lg"></div></div>
+          <div class="program__dots">
+            <button class="carousel__arrow only-mobile" type="button" data-prev aria-label="Попередня програма"><img src="assets/icons/carousel-chevron.svg" alt=""></button>
+            <div class="dots dots--lg"></div>
+            <button class="carousel__arrow carousel__arrow--next only-mobile" type="button" data-next aria-label="Наступна програма"><img src="assets/icons/carousel-chevron.svg" alt=""></button>
+          </div>
         </div>
       </div>
     </div>
@@ -66,9 +74,10 @@
             <p class="eyebrow">Про нас</p>
             <div class="about__copy">
               <h2 class="h2" id="about-title"><span class="only-desktop">Сучасний медичний центр з турботою про кожного</span><span class="only-mobile">Про нас</span></h2>
-              <p>SANA VITA — багатопрофільний медичний центр, в якому надають допомогу одні з найкращих лікарів міста. Ми спеціалізуємось на амбулаторному лікуванні хірургічних проблем: завдяки передовим європейським методикам і сучасному обладнанню більшість процедур малоінвазивні, безболісні та без госпіталізації.</p>
+              <p class="only-desktop">SANA VITA — багатопрофільний медичний центр, в якому надають допомогу одні з найкращих лікарів міста. Ми спеціалізуємось на амбулаторному лікуванні хірургічних проблем: завдяки передовим європейським методикам і сучасному обладнанню більшість процедур малоінвазивні, безболісні та без госпіталізації.</p>
+              <p class="only-mobile about__mtext">SANA VITA — це сучасний багатопрофільний медичний центр, в якому надають допомогу одні з найкращих лікарів міста. Центр спеціалізується на амбулаторному лікуванні хірургічних проблем. Завдяки використанню передових європейських методик у хірургії, при використанні найсучаснішого обладнання ми лікуємо багато захворювань за допомогою малоінвазивних, безболісних процедур. Такий підхід дозволяє зробити процес лікування швидким, комфортним, безпечним та економічно привабливим.</p>
             </div>
-            <a class="btn btn--green" href="#reviews">Дізнатися більше</a>
+            <a class="btn btn--green" href="#reviews"><span class="only-desktop">Дізнатися більше</span><span class="only-mobile">Дізнайся більше</span></a>
           </div>
           <div class="stats">
             <div class="card stat"><b>5.842</b><span>пацієнтів у клієнтській базі</span></div>
@@ -168,7 +177,7 @@
             <div class="doc__info"><div><h3 class="doc__name">Бондаревич Світлана М.</h3><p class="doc__role">Лікар уролог</p></div>
               <div class="doc__btns"><a class="doc__btn doc__btn--ghost" href="doctor.html">Про лікаря</a><button class="doc__btn doc__btn--fill" type="button" data-open="call">Записатись</button></div></div>
           </article>
-          <article class="doc">
+          <article class="doc doc--no-mobile">
             <div class="doc__photo"><img src="assets/img/doctor-vylehzhanin.webp" alt="Вилегжанін Дмитро С." loading="lazy" style="left:-4.17%;top:0.33%;width:108.5%;height:115.25%"></div>
             <div class="doc__info"><div><h3 class="doc__name">Вилегжанін Дмитро С.</h3><p class="doc__role">Лікар проктолог</p></div>
               <div class="doc__btns"><a class="doc__btn doc__btn--ghost" href="doctor.html">Про лікаря</a><button class="doc__btn doc__btn--fill" type="button" data-open="call">Записатись</button></div></div>
@@ -191,8 +200,9 @@
     <div class="container welcome__inner">
       <p class="eyebrow">Ласкаво просимо</p>
       <h2 class="h2 only-mobile" id="welcome-title" style="align-self:flex-start">Ласкаво просимо</h2>
-      <div class="values" data-values>
+      <div class="values" data-values data-mobile-start="3">
         <img class="values__orbit" src="assets/icons/orbit.svg" alt="" aria-hidden="true">
+        <img class="values__orbit-m" src="assets/icons/orbit-mobile.svg" alt="" aria-hidden="true">
         <img class="values__orbit-inner" src="assets/img/orbit-inner.webp" alt="" aria-hidden="true">
         <div class="values__center" aria-live="polite">
           <h3>Філософія</h3>
@@ -200,22 +210,22 @@
         </div>
         <button class="value is-active" type="button" aria-pressed="true" style="left:50%;top:10.29%" aria-label="Філософія"
           data-title="Філософія" data-text="Головна наша цінність – це наш пацієнт, його здоровʼя та комфорт. Девіз медичного центру звучить так: «Якісна медицина доступна кожному».">
-          <img src="assets/icons/value-philosophy.svg" alt=""></button>
+          <img src="assets/icons/value-philosophy.svg" data-active-src="assets/icons/value-philosophy-active.svg" alt=""></button>
         <button class="value" type="button" aria-pressed="false" style="left:84.41%;top:30.15%" aria-label="Комфорт"
           data-title="Комфорт" data-text="Затишні кабінети, прийом без черг і гарантована анонімність. Ми дбаємо, щоб кожен візит був спокійним і зручним.">
-          <img src="assets/icons/value-comfort.svg" alt=""></button>
+          <img src="assets/icons/value-comfort.svg" data-active-src="assets/icons/value-comfort-active.svg" alt=""></button>
         <button class="value" type="button" aria-pressed="false" style="left:84.41%;top:69.85%" aria-label="Вартість"
           data-title="Вартість" data-text="Прозорі ціни без прихованих платежів. Частину обстежень можна пройти безкоштовно за державними програмами.">
-          <img src="assets/icons/value-cost.svg" alt=""></button>
+          <img src="assets/icons/value-cost.svg" data-active-src="assets/icons/value-cost-active.svg" alt=""></button>
         <button class="value" type="button" aria-pressed="false" style="left:50%;top:89.71%" aria-label="Лікарі"
           data-title="Лікарі" data-text="Кожен пацієнт хоче знайти для себе певного, найдосвідченішого та найкращого лікаря. Тому ми запросили до нашого центру саме тих лікарів, яких шукають!">
-          <img src="assets/icons/value-doctors.svg" alt=""></button>
+          <img src="assets/icons/value-doctors.svg" data-active-src="assets/icons/value-doctors-active.svg" alt=""></button>
         <button class="value" type="button" aria-pressed="false" style="left:15.59%;top:69.85%" aria-label="Безпека"
           data-title="Безпека" data-text="Малоінвазивні та безболісні методики, сучасні стандарти стерильності та лікування без госпіталізації.">
-          <img src="assets/icons/value-safety.svg" alt=""></button>
+          <img src="assets/icons/value-safety.svg" data-active-src="assets/icons/value-safety-active.svg" alt=""></button>
         <button class="value" type="button" aria-pressed="false" style="left:15.59%;top:30.15%" aria-label="Обладнання"
           data-title="Обладнання" data-text="Сучасне обладнання та передові європейські методики дозволяють точно діагностувати й ефективно лікувати.">
-          <img src="assets/icons/value-equipment.svg" alt=""></button>
+          <img src="assets/icons/value-equipment.svg" data-active-src="assets/icons/value-equipment-active.svg" alt=""></button>
       </div>
     </div>
   </section>
