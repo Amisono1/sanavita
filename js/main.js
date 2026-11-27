@@ -168,22 +168,70 @@
     });
   }
 
-  /* ---------- Коло цінностей ---------- */
+  /* ---------- Коло цінностей: обертання по орбіті ---------- */
   function initValues() {
     document.querySelectorAll("[data-values]").forEach(function (root) {
       var center = root.querySelector(".values__center");
       var title = center.querySelector("h3");
       var text = center.querySelector("p");
-      var items = root.querySelectorAll(".value");
-      items.forEach(function (btn) {
-        btn.addEventListener("click", function () {
-          items.forEach(function (b) { b.classList.remove("is-active"); b.setAttribute("aria-pressed", "false"); });
-          btn.classList.add("is-active"); btn.setAttribute("aria-pressed", "true");
-          title.textContent = btn.getAttribute("data-title");
-          text.textContent = btn.getAttribute("data-text");
-          center.classList.remove("is-swap"); void center.offsetWidth; center.classList.add("is-swap");
+      var inner = root.querySelector(".values__orbit-inner");
+      var items = Array.prototype.slice.call(root.querySelectorAll(".value"));
+      var n = items.length, step = 360 / n, R = 39.71; // радіус орбіти у % від розміру кола
+      var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      var offset = 0, active = 0, anim = null, timer = null, hover = false;
+
+      function place(off) {
+        items.forEach(function (el, i) {
+          var a = (-90 + i * step + off) * Math.PI / 180;
+          el.style.left = (50 + R * Math.cos(a)) + "%";
+          el.style.top = (50 + R * Math.sin(a)) + "%";
         });
+        if (inner) inner.style.transform = "rotate(" + off + "deg)";
+      }
+      function setActive(k) {
+        active = k;
+        items.forEach(function (b, i) { b.classList.toggle("is-active", i === k); b.setAttribute("aria-pressed", i === k ? "true" : "false"); });
+        center.classList.add("is-fading");
+        setTimeout(function () {
+          title.textContent = items[k].getAttribute("data-title");
+          text.textContent = items[k].getAttribute("data-text");
+          center.classList.remove("is-fading");
+        }, reduce ? 0 : 220);
+      }
+      function go(k) {
+        if (k === active) return;
+        var target = -k * step;
+        var diff = ((target - offset) % 360 + 540) % 360 - 180; // найкоротший шлях
+        var from = offset, to = offset + diff, t0 = null, dur = reduce ? 0 : 900;
+        setActive(k);
+        cancelAnimationFrame(anim);
+        function frame(t) {
+          if (t0 === null) t0 = t;
+          var x = dur ? Math.min(1, (t - t0) / dur) : 1;
+          var e = x < .5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2; // easeInOutCubic
+          offset = from + (to - from) * e;
+          place(offset);
+          if (x < 1) anim = requestAnimationFrame(frame);
+        }
+        anim = requestAnimationFrame(frame);
+      }
+      function restart() {
+        clearInterval(timer);
+        if (reduce) return;
+        timer = setInterval(function () { if (!hover && !document.hidden) go((active + 1) % n); }, 5000);
+      }
+      items.forEach(function (b, i) {
+        b.addEventListener("click", function () { go(i); restart(); });
       });
+      root.addEventListener("mouseenter", function () { hover = true; });
+      root.addEventListener("mouseleave", function () { hover = false; });
+      root.addEventListener("focusin", function () { hover = true; });
+      root.addEventListener("focusout", function () { hover = false; });
+      // автопрокрутка стартує, коли коло зʼявляється на екрані
+      if ("IntersectionObserver" in window) {
+        new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) restart(); else clearInterval(timer); }); }, { threshold: .4 }).observe(root);
+      } else restart();
+      place(0);
     });
   }
 
