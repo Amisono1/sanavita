@@ -1444,3 +1444,49 @@ main > section > .container { position: relative; }
   .program__card { gap: 10px; }
   .program__desc { line-height: 1.35; }
 }
+
+/* ==========================================================
+   Мобільний текст і декор — точно за мобільним макетом
+   ========================================================== */
+:root { --gothic: "Century Gothic", "CenturyGothic", "Didact Gothic", "AppleGothic", sans-serif; }
+.mdeco { display: none; }
+@media (max-width: 767px) {
+  .mdeco { display: flex; position: absolute; z-index: 0; align-items: center; justify-content: center; pointer-events: none; }
+  .mdeco__rot { position: relative; flex: none; }
+  .mdeco img { position: absolute; max-width: none; }
+  .hero, .about, .reviews, .welcome, main > section { position: relative; }
+
+  .gothic { font-family: var(--gothic); }
+  .mlines { display: block !important; letter-spacing: .28px; color: var(--black); }
+  .mlines > span { display: block; line-height: 1.2; margin-bottom: var(--g, 0); }
+  .mlines > span:last-child { margin-bottom: 0; }
+  .mlines .up { text-transform: uppercase; }
+
+  .hero-call .mlines { font-size: 14px; }
+
+  .program__card { justify-content: center; height: 240px; min-height: 0; padding: 20px; }
+  .program__m { font-size: 14px; letter-spacing: .35px; }
+  .program__m .pk { font-weight: 300; text-transform: uppercase; }
+  .program__m .pt { font-weight: 700; font-size: 16px; margin-bottom: 13.04px; }
+
+  .about__mtext { padding: 10px; font-size: 14px !important; line-height: normal !important; white-space: nowrap; }
+
+  .review .review__m { font-size: 14px; color: var(--text); }
+  .review p:not(.review__stars):not(.review__m) { font-family: var(--gothic); font-size: 14px; line-height: 21.8px; }
+  .review__author b { letter-spacing: 0; }
+
+  .dept__desc { line-height: 26.8px; }
+  .doctors .doc__role { margin-top: 8.84px; }
+
+  .values__center p { font-family: var(--gothic); font-size: 13px; line-height: 19.8px; letter-spacing: .26px; }
+  .values__center { left: 20%; right: 20%; }
+
+  .post__title { margin-bottom: 1.8px; }
+  .post__excerpt { line-height: 1.2; letter-spacing: .28px; color: var(--black); }
+}
+@media (max-width: 767px) {
+  /* усі лінії під контентом, незалежно від секції */
+  main > section, .section { z-index: auto; }
+  .mdeco { z-index: 0; }
+  main > section > .container, .welcome__inner { position: relative; z-index: 1; }
+}
