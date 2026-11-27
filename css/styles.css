@@ -1269,3 +1269,21 @@ main > section, .section { position: relative; z-index: 1; }
 @media (max-width: 767px) {
   .pgroup__toggle::before, .pgroup__toggle::after { width: 12px; margin-left: -6px; background: var(--text) !important; }
 }
+
+/* ---------- Декор: зірочки та лінії ---------- */
+main > section > .container { position: relative; }
+.sparkle { position: absolute; z-index: 0; pointer-events: none; max-width: none; }
+/* кінці ліній м'яко розчиняються, а біля країв екрана лінії плавно зникають */
+.deco-layer {
+  -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 9%, #000 91%, transparent 100%);
+  mask-image: linear-gradient(90deg, transparent 0, #000 9%, #000 91%, transparent 100%);
+}
+.deco-layer .deco > img {
+  -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 14%, #000 86%, transparent 100%);
+  mask-image: linear-gradient(90deg, transparent 0, #000 14%, #000 86%, transparent 100%);
+}
+@media (min-width: 1600px) {
+  .deco-layer { -webkit-mask-image: linear-gradient(90deg, transparent calc(50% - 800px), #000 calc(50% - 620px), #000 calc(50% + 620px), transparent calc(50% + 800px)); mask-image: linear-gradient(90deg, transparent calc(50% - 800px), #000 calc(50% - 620px), #000 calc(50% + 620px), transparent calc(50% + 800px)); }
+}
+/* на вужчих екранах блоки мають іншу висоту, тож декор ховаємо, щоб він не зʼїжджав */
+@media (max-width: 1199px) { .deco-layer, .sparkle, .hero__sparkle { display: none; } }
