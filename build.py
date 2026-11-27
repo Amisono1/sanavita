@@ -5,6 +5,7 @@
 <!-- {"title": "...", "description": "...", "active": "home"} -->
 Запуск: python3 build.py
 """
+import hashlib
 import json
 import pathlib
 import re
@@ -36,7 +37,7 @@ LAYOUT = """<!doctype html>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/styles.css">
+<link rel="stylesheet" href="css/styles.css?v={ver}">
 </head>
 <body data-page="{active}">
 {header}
@@ -44,7 +45,7 @@ LAYOUT = """<!doctype html>
 {body}
 </div>
 {footer}
-<script src="js/main.js" defer></script>
+<script src="js/main.js?v={ver}" defer></script>
 </body>
 </html>
 """
@@ -72,6 +73,8 @@ def nav_html(active, mobile):
 def main():
     header_tpl = (SRC / "partials/header.html").read_text(encoding="utf-8")
     footer = (SRC / "partials/footer.html").read_text(encoding="utf-8")
+    # версія файлів для скидання кешу браузера після кожного оновлення
+    ver = hashlib.md5((ROOT / "css/styles.css").read_bytes() + (ROOT / "js/main.js").read_bytes()).hexdigest()[:8]
     for page in sorted((SRC / "pages").glob("*.html")):
         raw = page.read_text(encoding="utf-8")
         m = re.match(r"\s*<!--\s*(\{.*?\})\s*-->\s*", raw, re.S)
@@ -90,6 +93,7 @@ def main():
             header=header,
             body=body.rstrip(),
             footer=footer,
+            ver=ver,
         )
         (ROOT / page.name).write_text(html, encoding="utf-8")
         print("built", page.name)
