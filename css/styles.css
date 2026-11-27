@@ -1257,3 +1257,15 @@ main > section, .section { position: relative; z-index: 1; }
 .ct-map__card { z-index: 2; left: 24px; top: auto; bottom: 24px; }
 @media (max-width: 1099px) { .ct-map__card { left: 50%; } }
 @media (max-width: 767px) { .ct-map__open { top: 12px; right: 12px; padding: 8px 12px; font-size: 12px; } .ct-map__card { left: 50%; bottom: 16px; } }
+/* «+» / «−» в акордеоні прайсу малюємо лініями, щоб знак був точно по центру */
+.pgroup__toggle { position: relative; font-size: 0 !important; color: transparent !important; }
+.pgroup__toggle::before, .pgroup__toggle::after {
+  content: ""; position: absolute; left: 50%; top: 50%; width: 14px; height: 2px; margin: -1px 0 0 -7px;
+  border-radius: 1px; background: var(--green); transition: transform .25s ease, background-color .2s;
+}
+.pgroup__toggle::after { transform: rotate(90deg); }
+.pgroup.is-open .pgroup__toggle::before, .pgroup.is-open .pgroup__toggle::after { background: var(--white); }
+.pgroup.is-open .pgroup__toggle::after { transform: rotate(0deg); }
+@media (max-width: 767px) {
+  .pgroup__toggle::before, .pgroup__toggle::after { width: 12px; margin-left: -6px; background: var(--text) !important; }
+}
