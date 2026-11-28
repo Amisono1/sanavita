@@ -11,21 +11,9 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/styles.css?v=19b078e2">
-<script>
-/* мобільний макет намальований під ширину 360 px: на ширших телефонах масштабуємо його пропорційно */
-(function () {
-  function fit() {
-    var w = window.innerWidth;
-    document.documentElement.style.zoom = (w > 360 && w <= 480) ? (w / 360) : "";
-  }
-  fit();
-  window.addEventListener("resize", fit);
-  window.addEventListener("orientationchange", fit);
-})();
-</script>
+<link rel="stylesheet" href="css/styles.css?v=bb602968">
 </head>
-<body data-page="doctors">
+<body data-page="doctors" data-file="doctors">
 <div class="top-fade" aria-hidden="true"></div>
 <header class="header">
   <div class="container">
@@ -84,6 +72,143 @@
 
 <div class="page">
 <main>
+  <!-- ===== Мобільна версія сторінки (за мобільним макетом) ===== -->
+  <div class="m-only">
+    <section class="m-sec m-sec--first" aria-labelledby="m-docs-title">
+      <div class="container">
+        <nav class="crumbs" aria-label="Хлібні крихти"><a href="index.html">Головна</a><span aria-hidden="true">/</span><span aria-current="page">Лікарі</span></nav>
+        <div class="m-intro">
+          <h1 class="m-intro__title" id="m-docs-title">З увагою до вашого <br><span class="hl">здоровʼя</span> <br>З повагою до вашого <br><span class="hl">часу</span></h1>
+          <p>Досвідчені лікарі, які уважно вислухають і підберуть зрозумілий план лікування</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="m-sec" aria-labelledby="m-cat">
+      <div class="container">
+        <h2 class="m-title m-title--px" id="m-cat">Наші лікарі</h2>
+        <label class="search m-docs-search">
+          <span class="visually-hidden">Пошук лікаря</span>
+          <input type="search" placeholder="Пошук лікаря або спеціальності" data-doc-search autocomplete="off">
+          <img src="assets/icons/search-sm.svg" alt="">
+        </label>
+        <div class="chips m-chips" data-doc-chips role="toolbar" aria-label="Спеціальності">
+          <button class="chip is-active" type="button" data-filter="all" aria-pressed="true">Усі лікарі</button>
+          <button class="chip" type="button" data-filter="procto" aria-pressed="false">Проктологи</button>
+          <button class="chip" type="button" data-filter="uro" aria-pressed="false">Урологи</button>
+          <button class="chip" type="button" data-filter="gyn" aria-pressed="false">Гінекологи</button>
+          <button class="chip" type="button" data-filter="derm" aria-pressed="false">Дерматологи</button>
+          <button class="chip" type="button" data-filter="usd" aria-pressed="false">УЗД</button>
+          <button class="chip" type="button" data-filter="tricho" aria-pressed="false">Трихологи</button>
+          <button class="chip" type="button" data-filter="gastro" aria-pressed="false">Гастроентерологи</button>
+          <button class="chip" type="button" data-filter="diet" aria-pressed="false">Дієтологи</button>
+          <button class="chip" type="button" data-filter="dent" aria-pressed="false">Стоматологи</button>
+          <button class="chip" type="button" data-filter="surg" aria-pressed="false">Хірурги</button>
+          <button class="chip" type="button" data-filter="neuro" aria-pressed="false">Неврологи</button>
+          <button class="chip" type="button" data-filter="ther" aria-pressed="false">Терапевти</button>
+          <button class="chip" type="button" data-filter="andro" aria-pressed="false">Андрологи</button>
+          <button class="chip" type="button" data-filter="mass" aria-pressed="false">Масажисти</button>
+        </div>
+        <div class="m-doc-list" data-doc-list data-limit="16" data-more-always>
+          <article class="doc" data-cat="procto" data-search="Спільний Віталій І. Лікар проктолог">
+            <div class="doc__photo"><img src="assets/img/doctor-spilnyi.webp" alt="Спільний Віталій І." loading="lazy" style="left:0;top:-2.99%;width:100%;height:102.82%"></div>
+            <div class="doc__info"><div><h3 class="doc__name">Спільний Віталій І.</h3><p class="doc__role">Лікар проктолог</p></div>
+              <div class="doc__btns"><a class="doc__btn doc__btn--ghost" href="doctor.html">Про лікаря</a><button class="doc__btn doc__btn--fill" type="button" data-open="call">Записатися</button></div></div>
+          </article>
+          <article class="doc" data-cat="procto surg" data-search="Кирилова Олександра Ф. Лікар проктолог, хірург">
+            <div class="doc__photo"><img src="assets/img/doctor-kyrylova.webp" alt="Кирилова Олександра Ф." loading="lazy" style="left:0.01%;top:-0.73%;width:100%;height:101.93%"></div>
+            <div class="doc__info"><div><h3 class="doc__name">Кирилова Олександра Ф.</h3><p class="doc__role">Лікар проктолог, хірург</p></div>
+              <div class="doc__btns"><a class="doc__btn doc__btn--ghost" href="doctor.html">Про лікаря</a><button class="doc__btn doc__btn--fill" type="button" data-open="call">Записатися</button></div></div>
+          </article>
+          <article class="doc" data-cat="uro" data-search="Бондаревич Світлана М. Лікар уролог">
+            <div class="doc__photo"><img src="assets/img/doctor-bondarevych.webp" alt="Бондаревич Світлана М." loading="lazy" style="left:-0.19%;top:-6.06%;width:100%;height:106.23%"></div>
+            <div class="doc__info"><div><h3 class="doc__name">Бондаревич Світлана М.</h3><p class="doc__role">Лікар уролог</p></div>
+              <div class="doc__btns"><a class="doc__btn doc__btn--ghost" href="doctor.html">Про лікаря</a><button class="doc__btn doc__btn--fill" type="button" data-open="call">Записатися</button></div></div>
+          </article>
+          <article class="doc" data-cat="gyn" data-search="Богдановський Олексій Г. Лікар гінеколог">
+            <div class="doc__photo"><img src="assets/img/doctor-bohdanovskyi.webp" alt="Богдановський Олексій Г." loading="lazy" style="inset:0;width:100%;height:100%;object-fit:cover"></div>
+            <div class="doc__info"><div><h3 class="doc__name">Богдановський Олексій Г.</h3><p class="doc__role">Лікар гінеколог</p></div>
+              <div class="doc__btns"><a class="doc__btn doc__btn--ghost" href="doctor.html">Про лікаря</a><button class="doc__btn doc__btn--fill" type="button" data-open="call">Записатися</button></div></div>
+          </article>
+          <article class="doc" data-cat="neuro" data-search="Балдук Ілона І. Лікар невролог, дитячий невролог">
+            <div class="doc__photo"><img src="assets/img/doctor-balduk.webp" alt="Балдук Ілона І." loading="lazy" style="left:0.04%;top:-9.78%;width:100%;height:103.75%"></div>
+            <div class="doc__info"><div><h3 class="doc__name">Балдук Ілона І.</h3><p class="doc__role">Лікар невролог, дитячий невролог</p></div>
+              <div class="doc__btns"><a class="doc__btn doc__btn--ghost" href="doctor.html">Про лікаря</a><button class="doc__btn doc__btn--fill" type="button" data-open="call">Записатися</button></div></div>
+          </article>
+          <article class="doc" data-cat="dent" data-search="Чумаченко Андрій А. Лікар стоматолог">
+            <div class="doc__photo"><img src="assets/img/doctor-chumachenko.webp" alt="Чумаченко Андрій А." loading="lazy" style="left:0.03%;top:-2.86%;width:100%;height:102.92%"></div>
+            <div class="doc__info"><div><h3 class="doc__name">Чумаченко Андрій А.</h3><p class="doc__role">Лікар стоматолог</p></div>
+              <div class="doc__btns"><a class="doc__btn doc__btn--ghost" href="doctor.html">Про лікаря</a><button class="doc__btn doc__btn--fill" type="button" data-open="call">Записатися</button></div></div>
+          </article>
+          <article class="doc" data-cat="uro ther" data-search="Львов Дмитро Л. Лікар уролог, сімейний лікар">
+            <div class="doc__photo"><img src="assets/img/doctor-lvov.webp" alt="Львов Дмитро Л." loading="lazy" style="left:0.05%;top:-3.84%;width:100%;height:103.75%"></div>
+            <div class="doc__info"><div><h3 class="doc__name">Львов Дмитро Л.</h3><p class="doc__role">Лікар уролог, сімейний лікар</p></div>
+              <div class="doc__btns"><a class="doc__btn doc__btn--ghost" href="doctor.html">Про лікаря</a><button class="doc__btn doc__btn--fill" type="button" data-open="call">Записатися</button></div></div>
+          </article>
+          <article class="doc" data-cat="uro andro" data-search="Меленевський Олексій Д. Лікар уролог, андролог">
+            <div class="doc__photo"><img src="assets/img/doctor-melenevskyi.webp" alt="Меленевський Олексій Д." loading="lazy" style="left:0;top:0.1%;width:100%;height:103.56%"></div>
+            <div class="doc__info"><div><h3 class="doc__name">Меленевський Олексій Д.</h3><p class="doc__role">Лікар уролог, андролог</p></div>
+              <div class="doc__btns"><a class="doc__btn doc__btn--ghost" href="doctor.html">Про лікаря</a><button class="doc__btn doc__btn--fill" type="button" data-open="call">Записатися</button></div></div>
+          </article>
+          <article class="doc" data-cat="gyn usd" data-search="Завязкіна Людмила А. Лікар гінеколог, УЗД-діагност">
+            <div class="doc__photo"><img src="assets/img/doctor-zaviazkina.webp" alt="Завязкіна Людмила А." loading="lazy" style="inset:0;width:100%;height:100%;object-fit:cover"></div>
+            <div class="doc__info"><div><h3 class="doc__name">Завязкіна Людмила А.</h3><p class="doc__role">Лікар гінеколог, УЗД-діагност</p></div>
+              <div class="doc__btns"><a class="doc__btn doc__btn--ghost" href="doctor.html">Про лікаря</a><button class="doc__btn doc__btn--fill" type="button" data-open="call">Записатися</button></div></div>
+          </article>
+          <article class="doc" data-cat="ther" data-search="Борисюк Тетяна О. Сімейний лікар, терапевт">
+            <div class="doc__photo"><img src="assets/img/doctor-borysiuk.webp" alt="Борисюк Тетяна О." loading="lazy" style="left:0.11%;top:-2.69%;width:100%;height:102.51%"></div>
+            <div class="doc__info"><div><h3 class="doc__name">Борисюк Тетяна О.</h3><p class="doc__role">Сімейний лікар, терапевт</p></div>
+              <div class="doc__btns"><a class="doc__btn doc__btn--ghost" href="doctor.html">Про лікаря</a><button class="doc__btn doc__btn--fill" type="button" data-open="call">Записатися</button></div></div>
+          </article>
+          <article class="doc" data-cat="derm tricho" data-search="Желудкова Наталія В. Лікар дерматолог, трихолог">
+            <div class="doc__photo"><img src="assets/img/doctor-zheludkova.webp" alt="Желудкова Наталія В." loading="lazy" style="inset:0;width:100%;height:100%;object-fit:cover"></div>
+            <div class="doc__info"><div><h3 class="doc__name">Желудкова Наталія В.</h3><p class="doc__role">Лікар дерматолог, трихолог</p></div>
+              <div class="doc__btns"><a class="doc__btn doc__btn--ghost" href="doctor.html">Про лікаря</a><button class="doc__btn doc__btn--fill" type="button" data-open="call">Записатися</button></div></div>
+          </article>
+          <article class="doc" data-cat="gastro diet" data-search="Головіна Світлана В. Лікар гастроентеролог, дієтолог">
+            <div class="doc__photo"><img src="assets/img/doctor-holovina.webp" alt="Головіна Світлана В." loading="lazy" style="inset:0;width:100%;height:100%;object-fit:cover"></div>
+            <div class="doc__info"><div><h3 class="doc__name">Головіна Світлана В.</h3><p class="doc__role">Лікар гастроентеролог, дієтолог</p></div>
+              <div class="doc__btns"><a class="doc__btn doc__btn--ghost" href="doctor.html">Про лікаря</a><button class="doc__btn doc__btn--fill" type="button" data-open="call">Записатися</button></div></div>
+          </article>
+          <article class="doc" data-cat="derm tricho" data-search="Кальмус Карина Є. Лікар дерматолог, трихолог">
+            <div class="doc__photo"><img src="assets/img/doctor-kalmus.webp" alt="Кальмус Карина Є." loading="lazy" style="left:0.14%;top:-4.91%;width:100%;height:102.32%"></div>
+            <div class="doc__info"><div><h3 class="doc__name">Кальмус Карина Є.</h3><p class="doc__role">Лікар дерматолог, трихолог</p></div>
+              <div class="doc__btns"><a class="doc__btn doc__btn--ghost" href="doctor.html">Про лікаря</a><button class="doc__btn doc__btn--fill" type="button" data-open="call">Записатися</button></div></div>
+          </article>
+          <article class="doc" data-cat="dent" data-search="Хассан Надія А. Лікар стоматолог, дитячий стоматолог">
+            <div class="doc__photo"><img src="assets/img/doctor-khassan.webp" alt="Хассан Надія А." loading="lazy" style="left:0.1%;top:-6.82%;width:100%;height:100.55%"></div>
+            <div class="doc__info"><div><h3 class="doc__name">Хассан Надія А.</h3><p class="doc__role">Лікар стоматолог, дитячий стоматолог</p></div>
+              <div class="doc__btns"><a class="doc__btn doc__btn--ghost" href="doctor.html">Про лікаря</a><button class="doc__btn doc__btn--fill" type="button" data-open="call">Записатися</button></div></div>
+          </article>
+          <article class="doc" data-cat="mass" data-search="Джон Хо Рефлексотерапевт, масажист">
+            <div class="doc__photo"><img src="assets/img/doctor-john-ho.webp" alt="Джон Хо" loading="lazy" style="left:-0.16%;top:-0.02%;width:100%;height:103.55%"></div>
+            <div class="doc__info"><div><h3 class="doc__name">Джон Хо</h3><p class="doc__role">Рефлексотерапевт, масажист</p></div>
+              <div class="doc__btns"><a class="doc__btn doc__btn--ghost" href="doctor.html">Про лікаря</a><button class="doc__btn doc__btn--fill" type="button" data-open="call">Записатися</button></div></div>
+          </article>
+          <article class="doc" data-cat="procto" data-search="Вилегжанін Дмитро С. Лікар проктолог">
+            <div class="doc__photo"><img src="assets/img/doctor-vylehzhanin.webp" alt="Вилегжанін Дмитро С." loading="lazy" style="left:-4.16%;top:0.33%;width:108.49%;height:115.25%"></div>
+            <div class="doc__info"><div><h3 class="doc__name">Вилегжанін Дмитро С.</h3><p class="doc__role">Лікар проктолог</p></div>
+              <div class="doc__btns"><a class="doc__btn doc__btn--ghost" href="doctor.html">Про лікаря</a><button class="doc__btn doc__btn--fill" type="button" data-open="call">Записатися</button></div></div>
+          </article>
+          <p class="docs-empty" hidden>Нікого не знайдено. Залиште номер — адміністратор допоможе обрати лікаря.</p>
+          <button class="m-more" type="button" data-doc-more>Показати більше лікарів</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="m-sec" aria-labelledby="m-help">
+      <div class="container">
+        <div class="m-help">
+          <div class="m-help__text">
+            <h2 id="m-help">Не знаєте, до кого звернутися?</h2>
+            <p>Контакт центр працює щодня <br>з 8:00 до 22:00</p>
+          </div>
+          <button class="m-help__btn" type="button" data-open="call">Надіслати номер</button>
+        </div>
+      </div>
+    </section>
+  </div>
+
   <section class="page-hero">
     <div class="container">
       <nav class="crumbs" aria-label="Хлібні крихти"><a href="index.html">Головна</a><span aria-hidden="true">/</span><span aria-current="page">Лікарі</span></nav>
@@ -302,6 +427,7 @@
     <form class="modal modal--call" novalidate data-call-form>
       <div class="modal__top">
         <button class="icon-btn" type="button" data-close aria-label="Закрити"><img src="assets/icons/close.svg" alt=""></button>
+        <button class="menu__lang only-mobile" type="button">UA<img src="assets/icons/chevron-lang.svg" alt=""></button>
       </div>
       <div>
         <p class="modal__heading" id="call-title">Зворотний дзвінок</p>
@@ -335,6 +461,6 @@
   </div>
 </div>
 
-<script src="js/main.js?v=19b078e2" defer></script>
+<script src="js/main.js?v=bb602968" defer></script>
 </body>
 </html>

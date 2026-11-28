@@ -38,20 +38,8 @@ LAYOUT = """<!doctype html>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/styles.css?v={ver}">
-<script>
-/* мобільний макет намальований під ширину 360 px: на ширших телефонах масштабуємо його пропорційно */
-(function () {{
-  function fit() {{
-    var w = window.innerWidth;
-    document.documentElement.style.zoom = (w > 360 && w <= 480) ? (w / 360) : "";
-  }}
-  fit();
-  window.addEventListener("resize", fit);
-  window.addEventListener("orientationchange", fit);
-}})();
-</script>
 </head>
-<body data-page="{active}">
+<body data-page="{active}" data-file="{file}">
 {header}
 <div class="page">
 {body}
@@ -106,6 +94,7 @@ def main():
             body=body.rstrip(),
             footer=footer,
             ver=ver,
+            file=page.stem,
         )
         (ROOT / page.name).write_text(html, encoding="utf-8")
         print("built", page.name)

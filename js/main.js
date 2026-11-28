@@ -293,20 +293,27 @@
     var LINKS = { "Геморой": "disease.html" };
 
     function esc(s) { return s.replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); }
-    function item(name, label, q) {
+    function item(name, label, q, extra) {
+      var cls = "pitem" + (extra ? " " + extra : "");
       var text = esc(label);
       if (q) {
         var i = label.toLowerCase().indexOf(q);
         if (i > -1) text = esc(label.slice(0, i)) + "<mark>" + esc(label.slice(i, i + q.length)) + "</mark>" + esc(label.slice(i + q.length));
       }
       return LINKS[name]
-        ? '<a class="pitem" href="' + LINKS[name] + '">' + text + "</a>"
-        : '<button class="pitem" type="button" data-open="call">' + text + "</button>";
+        ? '<a class="' + cls + '" href="' + LINKS[name] + '">' + text + "</a>"
+        : '<button class="' + cls + '" type="button" data-open="call">' + text + "</button>";
     }
 
     var tabs = data.map(function (d, i) {
       var b = document.createElement("button");
       b.type = "button"; b.className = "ptab"; b.textContent = d[0];
+      // на мобільному (за макетом) деякі вкладки мають іншу назву й порядок, а частина прихована
+      if (d.length > 2) {
+        if (d[2] === "") b.classList.add("ptab--desktop");
+        else if (d[2] !== d[0]) b.innerHTML = '<span class="only-desktop">' + esc(d[0]) + '</span><span class="only-mobile">' + esc(d[2]).replace(/\n/g, "<br>") + "</span>";
+        if (d[3]) b.style.setProperty("--mo", d[3]);
+      }
       b.setAttribute("role", "tab");
       b.addEventListener("click", function () {
         if (mobile.matches && current === i && b.classList.contains("is-active")) { select(-1); return; }
@@ -330,7 +337,7 @@
       // на мобільному панель стоїть одразу під активною вкладкою
       if (mobile.matches) {
         var anchor = tabs[current];
-        if (anchor && current >= 0) { anchor.after(panel); panel.hidden = false; }
+        if (anchor && current >= 0) { anchor.after(panel); panel.style.setProperty("--mo", anchor.style.getPropertyValue("--mo") || 0); panel.hidden = false; }
         else panel.hidden = true;
       } else {
         root.appendChild(panel); panel.hidden = false;
@@ -341,7 +348,10 @@
       tabs.forEach(function (t, k) { t.classList.toggle("is-active", k === i); t.setAttribute("aria-selected", k === i ? "true" : "false"); });
       if (i >= 0) {
         title.textContent = data[i][0];
-        list.innerHTML = data[i][1].map(function (n) { return item(n, n); }).join("");
+        list.innerHTML = data[i][4]
+          // окремий перелік проблем для мобільного макета
+          ? data[i][1].map(function (n) { return item(n, n, "", "only-desktop"); }).join("") + data[i][4].map(function (n) { return item(n, n, "", "only-mobile"); }).join("")
+          : data[i][1].map(function (n) { return item(n, n); }).join("");
       }
       layout();
     }
@@ -358,7 +368,7 @@
         list.innerHTML = hits.length
           ? hits.map(function (h) { return item(h[0], h[0] + " · " + h[1], q); }).join("")
           : '<p class="problems__empty">Спробуйте іншу назву або залиште номер — адміністратор підкаже, до якого лікаря звернутися.</p>';
-        if (mobile.matches) { tabsBox.before(panel); panel.hidden = false; }
+        if (mobile.matches) { tabsBox.before(panel); panel.style.removeProperty("--mo"); panel.hidden = false; }
       });
     }
     // картки відділень зверху відкривають потрібну вкладку
@@ -375,40 +385,42 @@
 
   /* ---------- Лікарі: фільтр, пошук, «показати більше» ---------- */
   function initDoctors() {
-    var list = document.querySelector("[data-doc-list]");
-    if (!list) return;
-    var cards = Array.prototype.slice.call(list.querySelectorAll(".doc"));
-    var chips = document.querySelectorAll("[data-doc-chips] [data-filter]");
-    var search = document.querySelector("[data-doc-search]");
-    var more = document.querySelector("[data-doc-more]");
-    var empty = document.querySelector(".docs-empty");
-    var cat = "all", MOBILE_LIMIT = 8;
-    function apply() {
-      var q = search ? search.value.trim().toLowerCase() : "";
-      var n = 0;
-      cards.forEach(function (c) {
-        var okCat = cat === "all" || c.getAttribute("data-cat").split(" ").indexOf(cat) > -1;
-        var okQ = !q || c.getAttribute("data-search").toLowerCase().indexOf(q) > -1;
-        c.hidden = !(okCat && okQ);
-        c.classList.remove("is-extra");
-        if (!c.hidden) { n++; if (n > MOBILE_LIMIT) c.classList.add("is-extra"); }
+    // на сторінці два списки: десктопний і мобільний (за мобільним макетом); кожен зі своїми фільтрами
+    document.querySelectorAll("[data-doc-list]").forEach(function (list) {
+      var scope = list.closest("section") || document;
+      var cards = Array.prototype.slice.call(list.querySelectorAll(".doc"));
+      var chips = scope.querySelectorAll("[data-doc-chips] [data-filter]");
+      var search = scope.querySelector("[data-doc-search]");
+      var more = scope.querySelector("[data-doc-more]");
+      var empty = scope.querySelector(".docs-empty");
+      var cat = "all", MOBILE_LIMIT = parseInt(list.getAttribute("data-limit") || "8", 10);
+      var always = list.hasAttribute("data-more-always");
+      function apply() {
+        var q = search ? search.value.trim().toLowerCase() : "";
+        var n = 0;
+        cards.forEach(function (c) {
+          var okCat = cat === "all" || c.getAttribute("data-cat").split(" ").indexOf(cat) > -1;
+          var okQ = !q || c.getAttribute("data-search").toLowerCase().indexOf(q) > -1;
+          c.hidden = !(okCat && okQ);
+          c.classList.remove("is-extra");
+          if (!c.hidden) { n++; if (n > MOBILE_LIMIT) c.classList.add("is-extra"); }
+        });
+        if (empty) empty.hidden = n > 0;
+        if (more) more.hidden = list.classList.contains("is-expanded") || (!always && n <= MOBILE_LIMIT) || n === 0;
+      }
+      chips.forEach(function (chip) {
+        chip.addEventListener("click", function () {
+          cat = chip.getAttribute("data-filter");
+          chips.forEach(function (c) { c.classList.toggle("is-active", c === chip); c.setAttribute("aria-pressed", c === chip ? "true" : "false"); });
+          apply();
+        });
       });
-      if (empty) empty.hidden = n > 0;
-      if (more) more.hidden = n <= MOBILE_LIMIT || list.classList.contains("is-expanded");
-    }
-    chips.forEach(function (chip) {
-      chip.addEventListener("click", function () {
-        cat = chip.getAttribute("data-filter");
-        chips.forEach(function (c) { c.classList.toggle("is-active", c === chip); c.setAttribute("aria-pressed", c === chip ? "true" : "false"); });
-        apply();
-      });
+      if (search) search.addEventListener("input", apply);
+      if (more) more.addEventListener("click", function () { list.classList.add("is-expanded"); more.hidden = true; });
+      apply();
     });
-    if (search) search.addEventListener("input", apply);
-    if (more) more.addEventListener("click", function () { list.classList.add("is-expanded"); more.hidden = true; });
-    apply();
   }
 
-  /* ---------- Лайтбокс документів і хронологія ---------- */
   function initLightbox() {
     var box = document.getElementById("lightbox");
     if (!box) return;
@@ -457,7 +469,7 @@
       return '<div class="price-row price-row--head"><span class="price-row__name">Послуга</span><span class="price-row__price">Вартість</span><span class="price-row__act"></span></div>' +
         list.map(function (r) {
           return '<div class="price-row"><span class="price-row__name">' + hl(r[0], q) + '</span><span class="price-row__price">' + esc(r[1]) +
-            '</span><span class="price-row__act"><button class="btn btn--purple" type="button" data-open="call">Записатись</button></span></div>';
+            '</span><span class="price-row__act"><button class="btn btn--purple" type="button" data-open="call"><span class="only-desktop">Записатись</span><span class="only-mobile">Запис</span></button></span></div>';
         }).join("");
     }
     function group(title, list, open, q) {
@@ -472,7 +484,14 @@
     });
     var tabs = data.map(function (d, i) {
       var b = document.createElement("button");
-      b.type = "button"; b.className = "ptab"; b.textContent = d[0]; b.setAttribute("role", "tab");
+      b.type = "button"; b.className = "ptab"; b.textContent = d[0];
+      // на мобільному (за макетом) деякі вкладки мають іншу назву й порядок, а частина прихована
+      if (d.length > 2) {
+        if (d[2] === "") b.classList.add("ptab--desktop");
+        else if (d[2] !== d[0]) b.innerHTML = '<span class="only-desktop">' + esc(d[0]) + '</span><span class="only-mobile">' + esc(d[2]).replace(/\n/g, "<br>") + "</span>";
+        if (d[3]) b.style.setProperty("--mo", d[3]);
+      }
+      b.setAttribute("role", "tab");
       b.addEventListener("click", function () {
         if (search) search.value = "";
         if (mobile.matches && current === i) { select(-1); return; }
@@ -482,7 +501,7 @@
       return b;
     });
     function place() {
-      if (mobile.matches) { if (current >= 0) { tabs[current].after(panel); panel.hidden = false; } else panel.hidden = true; }
+      if (mobile.matches) { if (current >= 0) { tabs[current].after(panel); panel.style.setProperty("--mo", tabs[current].style.getPropertyValue("--mo") || 0); panel.hidden = false; } else panel.hidden = true; }
       else { root.appendChild(panel); panel.hidden = false; }
     }
     function select(i) {
@@ -508,13 +527,26 @@
       });
       tabs.forEach(function (t) { t.classList.remove("is-active"); });
       panel.innerHTML = html || '<div class="pgroup is-open"><div class="pgroup__body" style="padding-top:5px"><div class="price-note"><span>Нічого не знайдено за запитом «' + esc(q) + '».</span><button class="btn btn--purple" type="button" data-open="call">Запитати адміністратора</button></div></div></div>';
-      if (mobile.matches) { tabsBox.before(panel); panel.hidden = false; }
+      if (mobile.matches) { tabsBox.before(panel); panel.style.removeProperty("--mo"); panel.hidden = false; }
     });
     mobile.addEventListener ? mobile.addEventListener("change", place) : mobile.addListener(place);
     select(0);
   }
 
+  /* ---------- Мобільні плейсхолдери полів (за мобільним макетом) ---------- */
+  function initPlaceholders() {
+    var mq = window.matchMedia("(max-width: 767px)");
+    var fields = Array.prototype.slice.call(document.querySelectorAll("[data-placeholder-mobile]"));
+    fields.forEach(function (f) { f.setAttribute("data-placeholder-desktop", f.getAttribute("placeholder") || ""); });
+    function apply() {
+      fields.forEach(function (f) { f.setAttribute("placeholder", f.getAttribute(mq.matches ? "data-placeholder-mobile" : "data-placeholder-desktop")); });
+    }
+    apply();
+    mq.addEventListener ? mq.addEventListener("change", apply) : mq.addListener(apply);
+  }
+
   document.addEventListener("DOMContentLoaded", function () {
+    initPlaceholders();
     initPrices();
     initLightbox();
     initTimeline();

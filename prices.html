@@ -11,21 +11,9 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/styles.css?v=19b078e2">
-<script>
-/* мобільний макет намальований під ширину 360 px: на ширших телефонах масштабуємо його пропорційно */
-(function () {
-  function fit() {
-    var w = window.innerWidth;
-    document.documentElement.style.zoom = (w > 360 && w <= 480) ? (w / 360) : "";
-  }
-  fit();
-  window.addEventListener("resize", fit);
-  window.addEventListener("orientationchange", fit);
-})();
-</script>
+<link rel="stylesheet" href="css/styles.css?v=bb602968">
 </head>
-<body data-page="prices">
+<body data-page="prices" data-file="prices">
 <div class="top-fade" aria-hidden="true"></div>
 <header class="header">
   <div class="container">
@@ -87,6 +75,14 @@
   <section class="page-hero">
     <div class="container">
       <nav class="crumbs" aria-label="Хлібні крихти"><a href="index.html">Головна</a><span aria-hidden="true">/</span><span aria-current="page">Ціни</span></nav>
+      <div class="m-call only-mobile">
+        <div class="m-call__text">
+          <h2>Отримати дзвінок</h2>
+          <p>Контакт центр працює щодня <br>з 8:00 до 22:00</p>
+        </div>
+        <button class="btn btn--grad-green" type="button" data-open="call">Надіслати номер</button>
+        <button class="btn btn--grad-purple" type="button" data-open="call">Записатись онлайн</button>
+      </div>
       <div class="pr-hero">
         <div class="pr-hero__text">
           <h1 class="page-hero__title">Вартість <br class="only-desktop">медичних послуг</h1>
@@ -111,11 +107,12 @@
   <section class="section" style="padding-top:40px" aria-labelledby="pr-title" id="price-list">
     <div class="container">
       <div class="sec-head pr-head" style="margin-bottom:40px">
-        <div class="sec-head__text"><p class="eyebrow">Прайс</p><h2 class="h2" id="pr-title">Ціни за відділеннями</h2></div>
+        <div class="sec-head__text"><p class="eyebrow">Прайс</p><h2 class="h2" id="pr-title"><span class="only-desktop">Ціни за відділеннями</span><span class="only-mobile">Вартість медичних послуг</span></h2><p class="pr-mlead only-mobile">Щоб швидко знайти потрібну інформацію, введіть у рядок пошуку назву послуги, що вас цікавить</p></div>
         <label class="search pr-search">
-          <img src="assets/icons/search.svg" alt="">
+          <img class="only-desktop" src="assets/icons/search.svg" alt="">
           <span class="visually-hidden">Пошук послуги</span>
-          <input type="search" placeholder="Наприклад, «Видалення зовнішнього геморою»" data-price-search autocomplete="off">
+          <input type="search" placeholder="Наприклад, «Видалення зовнішнього геморою»" data-placeholder-mobile="Видалення зовнішнього геморою" data-price-search autocomplete="off">
+          <img class="only-mobile" src="assets/icons/search-sm.svg" alt="">
         </label>
       </div>
       <div class="problems prices" data-prices style="margin-top:0">
@@ -135,30 +132,47 @@
       </div>
     </div>
   </section>
+  <div class="m-only">
+    <section class="section m-cert-sec" aria-labelledby="m-cert-title">
+      <div class="container">
+        <div class="card cert cert--tight">
+          <div class="cert__text">
+            <span class="tag">Чекап у подарунок</span>
+            <h2 class="h2" id="m-cert-title">Подарунковий <span class="text-green">сертифікат</span> на комплексне обстеження</h2>
+            <p class="cert__mtext only-mobile">Комплексні чекапи нашого медичного центру доступні у вигляді подарункових сертифікатів. Придбайте сертифікат в адміністратора або замовте доставку.<br><br>Виявіть турботу про своїх близьких — а ми подбаємо, щоб вони були здорові.</p>
+            <p class="accent"><b>Здоровʼя — найцінніший подарунок!</b></p>
+            <div class="cert__btns">
+              <button class="btn btn--purple" type="button" data-open="call">Придбати сертифікат</button>
+              <button class="btn btn--outline" type="button" data-open="call">Замовити доставку</button>
+            </div>
+          </div>
+          <div class="cert__photo">
+            <img src="assets/img/certificate.webp" alt="Подарункові сертифікати на чекапи Sana Vita" width="1000" height="778" loading="lazy">
+            <img class="cert__gift" src="assets/icons/gift.svg" alt="" aria-hidden="true">
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
 </main>
 
 <script type="application/json" id="prices-data">
 [
-  ["Проктологія", [
-    ["Консультація та діагностика", []],
-    ["Лікування геморою", [
-      ["Безопераційне лікування геморою 2 стадії: латексне лігування, 1 вузол", "від 5 500 грн"],
-      ["Безопераційне лікування геморою 3 стадії: латексне лігування, 1 вузол", "від 5 900 грн"],
-      ["Лазерне видалення гемороїдальних вузлів, 1 вузол", "від 9 800 грн"],
-      ["Оперативне лікування геморою 2 стадії з одним комбінованим вузлом", "від 16 000 грн"],
-      ["Видалення зовнішнього геморою, усі вузли", "від 19 400 грн"],
-      ["Гемороїдектомія — операція за Мілліганом — Морганом", "34 500 грн"]
-    ]],
-    ["Лікування аноректального флеботромбозу", []],
-    ["Лікування анальних тріщин", []],
-    ["Лікування кіст і нориць", []],
-    ["Видалення новоутворень і шкірних утворень", []],
-    ["Лікування гнійних процесів і перевʼязки", []],
-    ["Ботулінотерапія", []]
-  ]],
-  ["Гінекологія", []], ["Урологія", []], ["Дерматологія та трихологія", []], ["Судинна хірургія", []],
-  ["УЗД-діагностика", []], ["Фізіопроцедури", []], ["Хірургія", []], ["Гастроентерологія", []],
-  ["Стоматологія", []], ["Неврологія", []], ["Сімейна медицина", []], ["Лабораторія", []], ["Масаж", []], ["Денний стаціонар", []]
+  ["Проктологія", [["Консультація та діагностика", []], ["Лікування геморою", [["Безопераційне лікування геморою 2 стадії: латексне лігування, 1 вузол", "від 5 500 грн"], ["Безопераційне лікування геморою 3 стадії: латексне лігування, 1 вузол", "від 5 900 грн"], ["Лазерне видалення гемороїдальних вузлів, 1 вузол", "від 9 800 грн"], ["Оперативне лікування геморою 2 стадії з одним комбінованим вузлом", "від 16 000 грн"], ["Видалення зовнішнього геморою, усі вузли", "від 19 400 грн"], ["Гемороїдектомія — операція за Мілліганом — Морганом", "34 500 грн"]]], ["Лікування аноректального флеботромбозу", []], ["Лікування анальних тріщин", []], ["Лікування кіст і нориць", []], ["Видалення новоутворень і шкірних утворень", []], ["Лікування гнійних процесів і перевʼязки", []], ["Ботулінотерапія", []]], "Проктологія", 1],
+  ["Гінекологія", [], "Гінекологія", 2],
+  ["Урологія", [], "Урологія", 4],
+  ["Дерматологія та трихологія", [], "Дерматологія та трихологія", 3],
+  ["Судинна хірургія", [], "Судинна хірургія", 5],
+  ["УЗД-діагностика", [], "УЗД діагностика", 6],
+  ["Фізіопроцедури", [], "Фізіопроцедури", 7],
+  ["Хірургія", [], "Хірургія", 8],
+  ["Гастроентерологія", [], "Гастроентерологія", 9],
+  ["Стоматологія", [], "Стоматологія", 10],
+  ["Неврологія", [], "", 0],
+  ["Сімейна медицина", [], "", 0],
+  ["Лабораторія", [], "", 0],
+  ["Масаж", [], "", 0],
+  ["Денний стаціонар", [], "", 0]
 ]
 </script>
 </div>
@@ -238,6 +252,7 @@
     <form class="modal modal--call" novalidate data-call-form>
       <div class="modal__top">
         <button class="icon-btn" type="button" data-close aria-label="Закрити"><img src="assets/icons/close.svg" alt=""></button>
+        <button class="menu__lang only-mobile" type="button">UA<img src="assets/icons/chevron-lang.svg" alt=""></button>
       </div>
       <div>
         <p class="modal__heading" id="call-title">Зворотний дзвінок</p>
@@ -271,6 +286,6 @@
   </div>
 </div>
 
-<script src="js/main.js?v=19b078e2" defer></script>
+<script src="js/main.js?v=bb602968" defer></script>
 </body>
 </html>
