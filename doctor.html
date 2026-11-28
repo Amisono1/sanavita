@@ -11,21 +11,9 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/styles.css?v=19b078e2">
-<script>
-/* мобільний макет намальований під ширину 360 px: на ширших телефонах масштабуємо його пропорційно */
-(function () {
-  function fit() {
-    var w = window.innerWidth;
-    document.documentElement.style.zoom = (w > 360 && w <= 480) ? (w / 360) : "";
-  }
-  fit();
-  window.addEventListener("resize", fit);
-  window.addEventListener("orientationchange", fit);
-})();
-</script>
+<link rel="stylesheet" href="css/styles.css?v=bb602968">
 </head>
-<body data-page="doctors">
+<body data-page="doctors" data-file="doctor">
 <div class="top-fade" aria-hidden="true"></div>
 <header class="header">
   <div class="container">
@@ -84,6 +72,156 @@
 
 <div class="page">
 <main>
+  <!-- ===== Мобільна версія сторінки (за мобільним макетом) ===== -->
+  <div class="m-only">
+    <section class="m-sec m-sec--first" aria-labelledby="m-doc-name">
+      <div class="container">
+        <nav class="crumbs" aria-label="Хлібні крихти"><a href="index.html">Головна</a><span aria-hidden="true">/</span><a href="doctors.html">Лікарі</a><span aria-hidden="true">/</span><span aria-current="page">Лікар</span></nav>
+        <div class="m-profile">
+          <div class="m-profile__head">
+            <h1 id="m-doc-name">Бондаревич <br>Світлана Майславівна</h1>
+            <p>Лікар уролог</p>
+          </div>
+          <div class="m-phones">
+            <a class="m-phone" href="tel:+380988072529"><img src="assets/icons/phone-green.svg" alt="">098 807 25 29</a>
+            <a class="m-phone" href="tel:+380990386816"><img src="assets/icons/phone-green.svg" alt="">099 038 68 16</a>
+          </div>
+          <div class="m-profile__photo">
+            <img src="assets/img/doctor-bondarevych-lg.webp" alt="Бондаревич Світлана Майславівна" width="1000" height="1000">
+            <button class="m-profile__btn" type="button" data-open="call">Записатися на прийом</button>
+          </div>
+        </div>
+        <div class="m-facts">
+          <div class="m-fact m-fact--big"><b>40+</b><p>років медичної практики</p></div>
+          <div class="m-fact"><b>Наукове звання</b><p>кандидат наук, медичний психолог</p></div>
+        </div>
+        <blockquote class="m-quote"><span aria-hidden="true">“</span><p>Урологічне здоровʼя потребує не лише досвіду, а й делікатного та уважного підходу. За роки практики я переконалася: багато проблем можна вирішити значно простіше, якщо не відкладати звернення й не залишатися з ними наодинці.<br><br>Для мене важливо, щоб кожен пацієнт почувався спокійно, міг відкрито говорити про будь-які симптоми <br>та отримав зрозуміле й професійне рішення.</p></blockquote>
+      </div>
+    </section>
+
+    <section class="m-sec" aria-labelledby="m-serv">
+      <div class="container">
+        <h2 class="m-title m-title--px" id="m-serv">Популярні послуги лікаря</h2>
+        <div class="m-services">
+          <div class="m-service"><span class="m-service__ico"><img src="assets/icons/activity.svg" alt=""></span><div><h3>Фізіотерапія урологічних проблем</h3><p>Відновлення та профілактика без зайвого дискомфорту</p></div></div>
+          <div class="m-service"><span class="m-service__ico"><img src="assets/icons/users.svg" alt=""></span><div><h3>Терапія сексопатолога</h3><p>Парні та індивідуальні консультації</p></div></div>
+          <div class="m-service"><span class="m-service__ico"><img src="assets/icons/pill.svg" alt=""></span><div><h3>Лікування хронічного простатиту</h3><p>Комплексна схема лікування <br>і контроль результату</p></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="m-sec" aria-labelledby="m-drev">
+      <div class="container">
+        <h2 class="m-title m-title--px" id="m-drev">Відгуки пацієнтів</h2>
+        <div class="carousel m-reviews" data-carousel>
+          <div class="carousel__track">
+            <article class="m-review">
+              <div class="m-review__author"><span class="avatar-letter" aria-hidden="true">Л</span><div><b>Людмила</b><span>3 листопада 2026 <br>Перевірений пацієнт, DOC.UA</span></div></div>
+              <span class="m-stars" aria-label="Оцінка 5 з 5"><img src="assets/icons/star-yellow.svg" alt=""><img src="assets/icons/star-yellow.svg" alt=""><img src="assets/icons/star-yellow.svg" alt=""><img src="assets/icons/star-yellow.svg" alt=""><img src="assets/icons/star-yellow.svg" alt=""></span>
+              <p>Все було добре, професійно та зрозуміло на візиті. Надалі будемо спостерігатися у лікаря.</p>
+            </article>
+            <article class="m-review">
+              <div class="m-review__author"><span class="avatar-letter" aria-hidden="true">В</span><div><b>Вадим</b><span>13 червня 2026 <br>Перевірений пацієнт, DOC.UA</span></div></div>
+              <span class="m-stars" aria-label="Оцінка 5 з 5"><img src="assets/icons/star-yellow.svg" alt=""><img src="assets/icons/star-yellow.svg" alt=""><img src="assets/icons/star-yellow.svg" alt=""><img src="assets/icons/star-yellow.svg" alt=""><img src="assets/icons/star-yellow.svg" alt=""></span>
+              <p>Прийом сподобався, я знаю лікаря, у мене тільки позитивні враження. Лікаря рекомендую! Дуже хороший лікар.</p>
+            </article>
+          </div>
+          <div class="carousel__nav">
+            <button class="carousel__arrow" type="button" data-prev aria-label="Попередні відгуки"><img src="assets/icons/carousel-chevron.svg" alt=""></button>
+            <div class="dots"></div>
+            <button class="carousel__arrow carousel__arrow--next" type="button" data-next aria-label="Наступні відгуки"><img src="assets/icons/carousel-chevron.svg" alt=""></button>
+          </div>
+        </div>
+        <div class="m-center"><button class="m-btn" type="button" data-open="call">Залишити відгук</button></div>
+      </div>
+    </section>
+
+    <section class="m-sec" aria-labelledby="m-edu">
+      <div class="container">
+        <div class="m-tcard">
+          <div class="m-tcard__head"><span class="m-tcard__ico"><img src="assets/icons/cap.svg" alt=""></span><h2 id="m-edu">Освіта</h2></div>
+          <div class="m-tl-list">
+          <div class="m-tl"><img src="assets/icons/timeline-dot.svg" alt=""><div><b>1982</b><p>Благовіщенський державний медичний інститут, факультет «Лікувальна справа»</p></div></div>
+          <div class="m-tl"><img src="assets/icons/timeline-dot.svg" alt=""><div><b>1983</b><p>Інтернатура з хірургії</p></div></div>
+          <div class="m-tl"><img src="assets/icons/timeline-dot.svg" alt=""><div><b>1987</b><p>Спеціалізація з урології</p></div></div>
+          <div class="m-tl"><img src="assets/icons/timeline-dot.svg" alt=""><div><b>2008</b><p>Захист кандидатської дисертації за спеціальністю «Загальна психологія, історія психології»</p></div></div>
+          </div>
+        </div>
+        <div class="m-tcard m-tcard--gap" data-timeline>
+          <div class="m-tcard__head"><span class="m-tcard__ico"><img src="assets/icons/award.svg" alt=""></span><h2>Підвищення кваліфікації</h2></div>
+          <div class="m-tl-list">
+          <div class="m-tl"><img src="assets/icons/timeline-dot.svg" alt=""><div><b>2008</b><p>Спеціалізація «Медична психологія», Харків</p></div></div>
+          <div class="m-tl"><img src="assets/icons/timeline-dot.svg" alt=""><div><b>2018</b><p>Навчання за програмою «Психологічний супровід дітей з особливими потребами з використанням анімалотерапії», Харків</p></div></div>
+          <div class="m-tl"><img src="assets/icons/timeline-dot.svg" alt=""><div><b>2020</b><p>Підвищення кваліфікації «Сучасні підходи в генезі психосоматичних розладів», Харків</p></div></div>
+          <div class="m-tl"><img src="assets/icons/timeline-dot.svg" alt=""><div><b>2020</b><p>Науково-педагогічне стажування «Педагогічна та психологічна освіта як складова частина системи освіти України та країн ЄС», Влоцлавек, Польща</p></div></div>
+          <div class="m-tl tl" hidden><img src="assets/icons/timeline-dot.svg" alt=""><div><b>2021</b><p>Передатестаційний цикл «Урологія», ОДМедУ, кафедра урології та нефрології</p></div></div>
+          </div>
+          <button class="m-tcard__more" type="button" data-timeline-more>Показати всі 10 пунктів</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="m-sec" aria-labelledby="m-dipl">
+      <div class="container">
+        <h2 class="m-title m-title--px" id="m-dipl">Дипломи та сертифікати</h2>
+        <div class="carousel m-diplomas" data-carousel>
+          <div class="carousel__track">
+            <a class="m-diploma" href="assets/img/diploma-1.webp" data-lightbox><img src="assets/img/diploma-1.webp" alt="Сертифікат «КПТ: від теорії до практики»" loading="lazy"></a>
+            <a class="m-diploma" href="assets/img/diploma-2.webp" data-lightbox><img src="assets/img/diploma-2.webp" alt="Сертифікат лікаря" loading="lazy"></a>
+            <a class="m-diploma" href="assets/img/diploma-3.webp" data-lightbox><img src="assets/img/diploma-3.webp" alt="Сертифікат лікаря" loading="lazy"></a>
+            <a class="m-diploma" href="assets/img/diploma-4.webp" data-lightbox><img src="assets/img/diploma-4.webp" alt="Сертифікат лікаря" loading="lazy"></a>
+          </div>
+          <div class="carousel__nav">
+            <button class="carousel__arrow" type="button" data-prev aria-label="Попередні документи"><img src="assets/icons/carousel-chevron.svg" alt=""></button>
+            <div class="dots"></div>
+            <button class="carousel__arrow carousel__arrow--next" type="button" data-next aria-label="Наступні документи"><img src="assets/icons/carousel-chevron.svg" alt=""></button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="m-sec m-articles" aria-labelledby="m-art">
+      <div class="container">
+        <h2 class="m-title" id="m-art">Статті лікаря</h2>
+        <div class="carousel" data-carousel>
+          <div class="carousel__track">
+            <article class="post">
+              <div class="post__photo post__photo--bordered"><img src="assets/img/blog-prostate.webp" alt="Скульптура «Мислитель»" loading="lazy"></div>
+              <div class="post__body"><h3 class="post__title">Хвороби передміхурової залози</h3><p class="post__excerpt">Здорова передміхурова залоза — запорука чоловічого довголіття. За даними ООН, населення світу стрімко старіє…</p><a class="post__more" href="disease.html">Читати далі</a></div>
+              <span class="post__tag">Урологія</span>
+            </article>
+            <article class="post">
+              <div class="post__photo"><img src="assets/img/blog-kidneys.webp" alt="Лікар у рукавичках зі стетоскопом" loading="lazy"></div>
+              <div class="post__body"><h3 class="post__title">Важливість нирок для здоровʼя людини</h3><p class="post__excerpt">Життєдіяльність організму напряму залежить від стану судинної системи — і нирки відіграють у ній ключову роль…</p><a class="post__more" href="disease.html">Читати далі</a></div>
+              <span class="post__tag">Урологія</span>
+            </article>
+          </div>
+          <div class="carousel__nav">
+            <button class="carousel__arrow" type="button" data-prev aria-label="Попередні статті"><img src="assets/icons/carousel-chevron.svg" alt=""></button>
+            <div class="dots"></div>
+            <button class="carousel__arrow carousel__arrow--next" type="button" data-next aria-label="Наступні статті"><img src="assets/icons/carousel-chevron.svg" alt=""></button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="m-sec" aria-labelledby="m-dform">
+      <div class="container">
+        <div class="m-form">
+          <form class="m-form__card" novalidate data-call-form>
+            <div class="m-form__intro"><h2 id="m-dform">Зворотній звʼязок</h2><p>Напишіть нам своє запитання</p></div>
+            <div class="m-form__fields">
+              <div class="field"><label for="md-name">Ваше імʼя</label><input id="md-name" name="name" autocomplete="name" placeholder="Введіть ваше імʼя"></div>
+              <div class="field"><label for="md-phone">Номер телефону</label><input id="md-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="+38 (XXX) XXX XX XX" required><span class="field__error">Введіть повний номер телефону</span></div>
+              <div class="field"><label for="md-msg">Повідомлення</label><textarea id="md-msg" name="message" placeholder="Ваше запитання"></textarea></div>
+            </div>
+            <button class="m-form__submit" type="submit">Надіслати</button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </div>
+
   <section class="page-hero" style="padding-bottom:80px">
     <div class="container">
       <nav class="crumbs" aria-label="Хлібні крихти"><a href="index.html">Головна</a><span aria-hidden="true">/</span><a href="doctors.html">Лікарі</a><span aria-hidden="true">/</span><span aria-current="page">Бондаревич Світлана Майславівна</span></nav>
@@ -331,6 +469,7 @@
     <form class="modal modal--call" novalidate data-call-form>
       <div class="modal__top">
         <button class="icon-btn" type="button" data-close aria-label="Закрити"><img src="assets/icons/close.svg" alt=""></button>
+        <button class="menu__lang only-mobile" type="button">UA<img src="assets/icons/chevron-lang.svg" alt=""></button>
       </div>
       <div>
         <p class="modal__heading" id="call-title">Зворотний дзвінок</p>
@@ -364,6 +503,6 @@
   </div>
 </div>
 
-<script src="js/main.js?v=19b078e2" defer></script>
+<script src="js/main.js?v=bb602968" defer></script>
 </body>
 </html>
