@@ -1130,11 +1130,8 @@ html, body { overflow-x: hidden; }
   .about { padding: 60px 0 0; }
   .about__row, .about__text, .about__intro, .about__copy { display: contents; }
   .about .container { display: flex; flex-direction: column; align-items: flex-start; gap: 15px; }
-  .about .stats, .about__intro > .eyebrow { display: none; }
-  .about__copy .h2 { order: 1; padding: 10px; }
-  .about__photo { order: 2; flex: none; align-self: stretch; height: auto; aspect-ratio: 606 / 477; border-radius: 22px; }
-  .about__mtext.only-mobile { order: 3; }
-  .about__intro .btn { order: 4; }
+  .about__photo, .about .stats, .about__intro > .eyebrow { display: none; }
+  .about__copy .h2 { padding: 10px; }
   .about__mtext.only-mobile { display: block !important; align-self: center; padding: 10px; font-size: 14px; line-height: 26.8px; letter-spacing: .28px; white-space: nowrap; color: var(--black); margin: -5px 0; }
   .about__intro .btn { align-self: center; width: 280px; height: 48px; padding: 0 20px; border-radius: 60px; font-size: 16px; line-height: 1.2; letter-spacing: .32px; }
 
