@@ -1502,20 +1502,8 @@ html, body { overflow-x: hidden; }
   .m-ct .crumbs { padding: 0; }
   .m-ct .crumbs + .m-ct__title { margin-top: 30px; }
   .m-ct__title { font-weight: 700; font-size: 20px; line-height: 1.15; letter-spacing: .4px; color: #292e20; }
-  .m-scheme {
-    position: relative; height: 440px; border-radius: 20px; overflow: hidden; background-color: #e9eddc;
-    background-image: linear-gradient(to bottom, #d8dfc4 1px, transparent 1px), linear-gradient(to right, #d8dfc4 1px, transparent 1px);
-    background-size: 100% 40px, 44px 100%;
-  }
-  .m-scheme > * { position: absolute; }
-  .m-scheme__range--lg { left: 79px; top: 36px; width: 160px; height: 160px; }
-  .m-scheme__range--sm { left: 105px; top: 62px; width: 108px; height: 108px; }
-  .m-scheme__link { left: 33px; top: 138px; width: 126px; height: 85px; max-width: none; }
-  .m-scheme__clinic { left: 128px; top: 78px; display: flex; align-items: center; justify-content: center; width: 60px; height: 60px; border-radius: 30px; background: var(--green); }
-  .m-scheme__clinic img { width: 28px; height: 28px; }
-  .m-scheme__name { left: 197px; top: 92px; font-weight: 700; font-size: 14px; line-height: normal; color: #51620f; }
-  .m-scheme__station { left: 24px; top: 213px; display: flex; align-items: center; gap: 10px; font-size: 14px; line-height: normal; color: #51620f; white-space: nowrap; }
-  .m-scheme__station img { width: 20px; height: 20px; }
+  .m-scheme { position: relative; height: 440px; border-radius: 20px; overflow: hidden; background: #e9eddc; }
+  .m-scheme__map { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
   .m-address {
     position: absolute; z-index: 1; left: 16px; top: 263px; display: flex; flex-direction: column; gap: 15px; width: 296px; max-width: calc(100% - 32px); padding: 18px; border-radius: 22px;
     background: rgba(255, 255, 255, .87); border: 1px solid var(--white);
